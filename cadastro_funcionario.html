@@ -73,7 +73,7 @@
     <main>
         <div class="formulario">
             <div class="formularioDados">
-                <h2 class="titulo">Dados do Cliente</h2>
+                <h2 class="titulo">Dados do Funcionário</h2>
                 <form class="row g-3">
                     <div class="col-md-4">
                         <label for="validationServer01" class="form-label">Nome</label>
@@ -94,31 +94,21 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="validationServer02" class="form-label">E-mail</label>
-                        <input type="email" class="form-control " id="" value="" required>
-                    </div>
-
-                    <h2 class="titulo">Endereço</h2>
-                    <div class="col-md-4">
-                        <label for="validationServer02" class="form-label">CEP</label>
-                        <input type="text" class="form-control " id="" value="" required>
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="validationServer02" class="form-label">Cidade</label>
-                        <input type="text" class="form-control " id="" value="" required>
+                        <label for="validationServer02" class="form-label">Cargo</label>
+                        <select name="cars" id="cars" form="carform" class="form-select">
+                            <option value="selecione" disabled selected>Selecione</option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </select>
                     </div>
 
                     <div class="col-md-4">
-                        <label for="validationServer02" class="form-label">Rua</label>
-                        <input type="text" class="form-control " id="" value="" required>
+                        <label for="validationServer02" class="form-label">Salário</label>
+                        <input type="number" class="form-control " id="" value="" required>
                     </div>
 
-                    <div class="col-md-4">
-                        <label for="validationServer02" class="form-label">Número</label>
-                        <input type="text" class="form-control " id="" value="" required>
-                    </div>
-                    
                     <div class="col-12">
                         <button class="btn btn btn-primary botao" type="submit">Cadastrar</button>
                     </div>
