@@ -1,6 +1,6 @@
 .formulario{
-    background-color:rgba(199, 198, 198,0.5);
-    margin: 20px 300px;
+    background-color:rgba(199, 198, 198,0.4);
+    margin: 30px 700px 0 60px;
     border-radius: 10px;
 }
 
@@ -8,8 +8,8 @@
     margin: 20px;
 }
 
-.butao{
-    margin: 0 450px 10px;
+.botao{
+    margin: 0 350px 10px;
 }
 
 .titulo{

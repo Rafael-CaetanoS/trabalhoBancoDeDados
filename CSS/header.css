@@ -1,0 +1,16 @@
+body {
+    background-image: url('../Image/2.jpg');
+    background-size: cover; /* Para cobrir todo o fundo */
+    background-repeat: no-repeat; /* Para não repetir a imagem */
+}
+
+
+.carinho_compra{
+    padding: 5px 20px;
+
+}
+
+.carinho_compra:hover{
+    border: 1px solid white;
+    border-radius: 5px  5px 0 0;
+}
