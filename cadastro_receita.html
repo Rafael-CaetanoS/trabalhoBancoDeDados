@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <title>Title</title>
+    <title>Farmácia</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -17,19 +17,19 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/formulario.css">
     <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/formulario.css">
   </head>
 
   <body>
-    
+
     <header>
-        <ul class="nav nav-tabs custom-header bg-primary" >
-            <li class="nav-item">
-              <a class="nav-link text-light" aria-current="page" href="index.html">
-                <img src="Image/001.png" alt="logo" width="30" height="30"></a>
-            </li>
-            
+      <ul class="nav nav-tabs custom-header bg-primary" >
+        <li class="nav-item">
+          <a class="nav-link text-light" aria-current="page" href="index.html">
+            <img src="Image/001.png" alt="logo" width="30" height="30"></a>
+        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cliente</a>
           <ul class="dropdown-menu">
@@ -51,16 +51,15 @@
         </li>
        
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-light"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Produtos</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="catalago.html">Catalogo</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="cadastro_compra_fornecedor.html">Cadastro Compra Fornecedor</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="cadastro_produtos.html">Cadastra Produtos</a></li>
-              <li><a class="dropdown-item" href="#"></a></li>
-            </ul>
-          </li>
+          <a class="nav-link dropdown-toggle text-light"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Produtos</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="catalago.html">Catalogo</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="cadastro_compra_fornecedor.html">Cadastro Compra Fornecedor</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="cadastro_produtos.html">Cadastra Produtos</a></li>
+          </ul>
+        </li>
 
 
 
@@ -73,33 +72,41 @@
     </header>
 
     <main>
-        <div class="formulario">
-            <div class="formularioDados">
-                <h2 class="titulo">Cadastro de Compra de Fornecedor</h2>
-                <form class="row g-3">
-                    <div class="col-md-4">
-                        <label for="validationServer02" class="form-label">Data da Compra</label>
-                        <input type="date" class="form-control " id="" value="" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="validationServer02" class="form-label">Descrição</label>
-                        <input type="text" class="form-control " id="" value="" required>
-                    </div>
+        <main>
+            <div class="formulario">
+                <div class="formularioDados">
+                    <h2 class="titulo">Cadastro da Receita do Cliente</h2>
+                    <form class="row g-3">
+                        <div class="col-md-4">
+                            <label for="validationServer01" class="form-label">Nome do Medico</label>
+                            <input type="text" class="form-control " id="" value="" required>
+                        </div>
 
-                    <div class="col-md-4">
-                        <label for="validationServer02" class="form-label">Quantidade</label>
-                        <input type="number" class="form-control " id="" value="" required>
-                    </div>
-
-                    <div class="col-12">
-                        <button class="btn btn btn-primary botao" type="submit">Cadastrar</button>
-                    </div>
-            </form>
+                        <div class="col-md-4">
+                            <label for="validationServer02" class="form-label">Remédio</label>
+                            <input type="text" class="form-control " id="" value="" required>
+                        </div>
+    
+                        <div class="col-md-4">
+                            <label for="validationServer02" class="form-label">Descrição</label>
+                            <input type="text" class="form-control " id="" value="" required>
+                        </div>
+    
+                        <div class="col-md-4">
+                            <label for="validationServer02" class="form-label">Dosagem</label>
+                            <input type="text" class="form-control " id="" value="" required>
+                        </div>
+                        
+                        <div class="col-12">
+                            <button class="btn btn btn-primary botao" type="submit">Cadastrar</button>
+                        </div>
+                </form>
+            </div>
         </div>
-    </div>
+        </main>
     </main>
     <footer>
-        <p>powerby: RAFAEL, LARISSA e EMILIA</p>
+      <p>powerby: RAFAEL, LARISSA e EMILIA</p>
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script
