@@ -77,15 +77,15 @@
         <div class="formulario">
             <div class="formularioDados">
                 <h2 class="titulo">Dados do Cargo</h2>
-                <form class="row g-3">
+                <form class="row g-3" action="CadastroBancoCargo.php" method="post">
                     <div class="col-md-4">
                         <label for="validationServer01" class="form-label">Inserir novo cargo</label>
-                        <input type="text" class="form-control " id="" value="" required>
+                        <input type="text" class="form-control " name="descricao" required>
                     </div>
 
                     <div class="col-md-4">
                         <label for="validationServer01" class="form-label">Inserir salário do cargo</label>
-                        <input type="number" class="form-control " id="" value="" required>
+                        <input type="number" class="form-control " name="salario" required>
                     </div>
                     
                     <div class="col-12">
@@ -110,7 +110,5 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
-   <?php>
-  ?>
   </body>
 </html>
