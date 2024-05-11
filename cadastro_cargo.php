@@ -74,30 +74,90 @@
     </header>
 
     <main>
-        <div class="formulario">
-            <div class="formularioDados">
-                <h2 class="titulo">Dados do Cargo</h2>
-                <form class="row g-3" action="CadastroBancoCargo.php" method="post">
-                    <div class="col-md-4">
-                        <label for="validationServer01" class="form-label">Inserir novo cargo</label>
-                        <input type="text" class="form-control " name="descricao" required>
-                    </div>
+    <div class="container-fluid mt-5" id="tabela">
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">IdCargo</th>
+              <th scope="col">Cargo</th>
+              <th scope="col">Salário</th>
+              <th scope="col">Ações</th>
 
-                    <div class="col-md-4">
-                        <label for="validationServer01" class="form-label">Inserir salário do cargo</label>
-                        <input type="number" class="form-control " name="salario" required>
-                    </div>
-                    
-                    <div class="col-12">
-                        <button class="btn btn btn-primary botao" type="submit" style="margin-left: 50px;">Cadastrar</button>
-                    </div>
-            </form>
+            </tr>
+          </thead>
+
+          <tbody class="table-group-divider">
+            <?php
+              include ("config.php");
+            $sql = "select * from cargo";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+              foreach ($result as $row) {
+                echo "<tr>";
+                echo "<td>" . $row["idcargo"] . "</td>";
+                echo "<td>" . $row["descricao"] . "</td>";
+                echo "<td>" . $row["salario"] . "</td>";
+                echo "<td ><button type='button' class='btn btn-primary' id='editar'>Editar</button>
+                       <button type='button' class='btn btn-danger' id='excluir'>Excluir</button>
+                      </td>";
+                echo "</tr>";
+          
+              }
+              
+            } else {
+              echo "0 resultados";
+              }
+              $conn->close();
+            ?>
+          </tbody>
+        </table>
+        <td><button type="button " class="btn btn-primary" id="cadastrar">Cadastrar</button>  
+
+      </div>
+    </div>
+
+
+    <div class="container-fluid " style="display:none" id="cadastro">
+      <div class="formulario">
+              <div class="formularioDados">
+                  <h2 class="titulo">Dados do Cargo</h2>
+                  <form class="row g-3" action="CadastroBancoCargo.php?operacao=inserir&tabela=cargo" method="post">
+                      <div class="col-md-4">
+                          <label for="validationServer01" class="form-label">Inserir novo cargo</label>
+                          <input type="text" class="form-control " name="descricao" required>
+                      </div>
+
+                      <div class="col-md-4">
+                          <label for="validationServer01" class="form-label">Inserir salário do cargo</label>
+                          <input type="number" class="form-control " name="salario" required>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-6" >
+                            <button class="btn btn btn-primary " type="submit">Cadastrar</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn btn-danger fluid" type="">cancelar</button>    
+                        </div>
+                      
+                      </div>
+                      
+              </form>
+          </div>
         </div>
     </div>
+
+
+    
+    
     </main>
     <footer>
         <p>powerby: RAFAEL, LARISSA e EMILIA</p>
     </footer>
+
+  
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -110,5 +170,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="js/main.js"></script>
+
   </body>
 </html>
