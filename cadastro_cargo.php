@@ -99,9 +99,11 @@
                 echo "<td>" . $row["idcargo"] . "</td>";
                 echo "<td>" . $row["descricao"] . "</td>";
                 echo "<td>" . $row["salario"] . "</td>";
-                echo "<td ><button type='button' class='btn btn-primary' id='editar'>Editar</button>
-                       <button type='button' class='btn btn-danger' id='excluir'>Excluir</button>
-                      </td>";
+                echo "<td>
+                  <button type='button' class='btn btn-primary' id='editar'>Editar</button>
+                  <button onclick=\"location.href='CadastroBancoCargo.php?operacao=excluir&tabela=cargo&id=".$row['idcargo']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
+                </td>";
+
                 echo "</tr>";
           
               }
