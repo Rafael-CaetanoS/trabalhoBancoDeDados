@@ -16,9 +16,10 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="CSS/style.css">
+  
     <link rel="stylesheet" href="CSS/formulario.css">
     <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/style.css">
 
   </head>
 
@@ -76,16 +77,18 @@
     <main>
     <div class="container-fluid mt-5" id="tabela">
       <div class="container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">IdCargo</th>
-              <th scope="col">Cargo</th>
-              <th scope="col">Salário</th>
-              <th scope="col">Ações</th>
+        <div class="fundoTabela">
+          <h2 class="titulo pl-3 mb-4">Dados do Cargo</h2>
+          <table class="table table-striped w-75 mx-auto">
+            <thead>
+              <tr>
+                <th scope="col-3">Id</th>
+                <th scope="col-3">Cargo</th>
+                <th scope="col-3">Salário</th>
+                <th scope="col-1" style="width: 200px;">Ações</th>
 
-            </tr>
-          </thead>
+              </tr>
+            </thead>
 
           <tbody class="table-group-divider">
             <?php
@@ -116,7 +119,7 @@
           </tbody>
         </table>
         <td><button type="button " class="btn btn-primary" id="cadastrar">Cadastrar</button>  
-
+        </div>
       </div>
     </div>
 
