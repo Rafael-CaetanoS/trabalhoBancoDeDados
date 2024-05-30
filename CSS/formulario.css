@@ -16,9 +16,15 @@
     padding-top: 20px;
     color:rgb(58, 58, 75);
 }
+.titulo1{
+    padding-left: 20px;
+    padding-top: 20px;
+    color:rgb(58, 58, 75);
+}
 
 .fundoTabela{
-    background-color:#1111;
-    margin: 30px 700px 0 60px;
+    width: 70%;
     border-radius: 10px;
+    background-color:rgba(199, 198, 198,0.4);
 }
+

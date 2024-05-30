@@ -11,9 +11,3 @@ html,body {
 main {
     height: calc(100vh - 106px);
 }
-
-.fundoTabela{
-    background-color:#1111;
-    margin: 30px 700px 0 60px;
-    border-radius: 10px;
-}
