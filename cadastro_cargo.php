@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <title>Title</title>
+    <title>FharmaViva</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -59,8 +59,11 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="cadastro_compra_fornecedor.php">Cadastro Compra Fornecedor</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="cadastro_produtos.php">Cadastra Produtos</a></li>
-            <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="cadastro_produtos.php">Cadastro Produto</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="cadastro_categoria.php">Cadastro Categoria</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="cadastro_promocao.php">Cadastro Promoção</a></li>
           </ul>
         </li>
 

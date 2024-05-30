@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <title>Title</title>
+    <title>FharmaViva</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -81,16 +81,12 @@
     <div class="container-fluid mt-4" id="tabela">
       <div class="container ">
         <div class="fundoTabela">
-          <h2 class="titulo1">Funcionarios</h2>
+          <h2 class="titulo1">Tipos Pagamento</h2>
           <table class="table table-striped w-75 mx-auto">
             <thead>
               <tr>
-                <th scope="col-3">Nome</th>
-                <th scope="col-3">Cpf</th>
-                <th scope="col-3">Rg</th>
-                <th scope="col-3">Telefone</th>
-                <th scope="col-3">Cargo</th>
-
+                <th scope="col-3">Id</th>
+                <th scope="col-3">Tipo de Pagamento</th>
                 <th scope="col-1" style="width: 200px;">Ações</th>
               </tr>
             </thead>
@@ -98,20 +94,17 @@
             <tbody class="table-group-divider">
               <?php
                 include ("config.php");
-              $sql = "select * from funcionario";
+              $sql = "select * from forma_pagamento";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {
                 foreach ($result as $row) {
                   echo "<tr>";
-                  echo "<td>" . $row["nome"] . "</td>";
-                  echo "<td>" . $row["cpf"] . "</td>";
-                  echo "<td>" . $row["rg"] . "</td>";
-                  echo "<td>" . $row["telefone"] . "</td>";
-                  echo "<td>" . $row["idCargo"] . "</td>";
+                  echo "<td>" . $row["idForma_pagamento"] . "</td>";
+                  echo "<td>" . $row["tipo"] . "</td>";
                   echo "<td>
                     <button type='button' class='btn btn-primary' id='editar'>Editar</button>
-                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=funcionario&idfunc=".$row['cpf']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
+                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=forma_pagamento&id=".$row['idForma_pagamento']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
                   </td>";
 
                   echo "</tr>";
@@ -136,48 +129,12 @@
     <div class="container-fluid" style="display:none" id="cadastro">
         <div class="formulario">
             <div class="formularioDados">
-                <h2 class="titulo">Cadastro Funcionário</h2>
-                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=funcionario" method="post">
+                <h2 class="titulo">Cadastrar Forma de Pagamento</h2>
+                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=forma_pagamento" method="post">
                     <div class="col-md-4">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required>
+                        <label for="tipo" class="form-label">Inserir novo tipo de Pagamento</label>
+                        <input type="text" class="form-control" id="tipo" name="tipo" required>
                     </div>
-                    <div class="col-md-4">
-                        <label for="cpf" class="form-label">Cpf</label>
-                        <input type="number" class="form-control" id="cpf" name="cpf" required>
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="rg" class="form-label">Rg</label>
-                        <input type="number" class="form-control" id="rg" name="rg" required>
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="telefone" class="form-label">Telefone</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone" required>
-                    </div>
-
-                    <div class="col-md-4">
-                    <label for="idcargo" class="form-label">Selecione o cargo</label>
-                        <select class="form-select" id="idcargo" name="idcargo" required>
-                            <option value="" selected disabled>Selecione um cargo</option>
-                            <?php
-                            include ("config.php");
-                            $sql = "SELECT idCargo, descricao FROM cargo";
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["idCargo"] . '">' . $row["descricao"] . '</option>';
-                                }
-                            } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
-                            }
-                            $conn->close();
-                            ?>
-                        </select>
-                    </div>
-
                     <div class="row"> 
                         <div class="col-md-6">
                             <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   
