@@ -88,6 +88,7 @@
                 <th scope="col-3">Id</th>
                 <th scope="col-3">Nome</th>
                 <th scope="col-3">Descrição</th>
+                <th scope="col-3">Quantidade</th>
                 <th scope="col-3">Categoria</th>
                 <th scope="col-3">Promoção</th>
                 <th scope="col-1" style="width: 200px;">Ações</th>
@@ -106,6 +107,7 @@
                   echo "<td>" . $row["idProduto"] . "</td>";
                   echo "<td>" . $row["nome"] . "</td>";
                   echo "<td>" . $row["descricao"] . "</td>";
+                  echo "<td>" . $row["qtde"] . "</td>";
                   echo "<td>" . $row["idCat_produto"] . "</td>";
                   echo "<td>" . $row["idPromocao"] . "</td>";
                   echo "<td>
@@ -144,6 +146,10 @@
                     <div class="col-md-4">
                         <label for="descricao" class="form-label">Inserir descrição</label>
                         <input type="text" class="form-control" id="descricao" name="descricao" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="qtde" class="form-label">Inserir quantidade</label>
+                        <input type="number" class="form-control" id="qtde" name="qtde" required>
                     </div>
 
                     <div class="col-md-4">
