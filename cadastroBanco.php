@@ -1,21 +1,20 @@
 <?php
-   include ("config.php");
-  
-   // Verificando a conexão
-   if ($conn->connect_error) {
-       die("Erro na conexão: " . $conn->connect_error);
-   }
-   
-   if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
+include ("config.php");
+
+// Verificando a conexão
+if ($conn->connect_error) {
+    die("Erro na conexão: " . $conn->connect_error);
+}
+
+if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
     $operacao = $_GET['operacao'];
     $tabela = $_GET['tabela'];
     
     // Processar a operação correspondente
     switch ($tabela) {
         case 'cargo':
-            switch ($operacao){
+            switch ($operacao) {
                 case 'inserir':
-                if ($tabela = 'cargo') {
                     // Verificar se o formulário foi submetido
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // Recupera os dados do formulário
@@ -29,7 +28,7 @@
                         if ($conn) {
                             if ($conn->query($sql) === TRUE) {
                                 header("Location: cadastro_cargo.php");
-                                echo  "<script>alert('Cadastrado com Sucesso!);</script>";
+                                exit();
                             } else {
                                 echo "Erro ao salvar os dados: " . $conn->error;
                             }
@@ -37,104 +36,256 @@
                             echo "Erro de conexão com o banco de dados.";
                         }
                     }
-                }
-                break;
-            case 'editar':
-                
-                break;
-            case 'excluir':
-                if(isset($_GET['id'])) {
-                    $id = htmlspecialchars($_GET['id']);
+                    break;
+
+                case 'editar':
+                    // Código para editar
+                    break;
+
+                case 'excluir':
+                    if (isset($_GET['id'])) {
+                        $id = htmlspecialchars($_GET['id']);
     
-                    $sql = "DELETE FROM cargo WHERE idcargo =".$id;
-                    
+                        $sql = "DELETE FROM cargo WHERE idcargo =".$id;
     
-                    if ($conn) {
-                        if ($conn->query($sql) === TRUE) {
-                            header("Location: cadastro_cargo.php");
-                            echo  "<script>alert('Excluído com Sucesso!);</script>";
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_cargo.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
                         } else {
-                            echo "Erro ao salvar os dados: " . $conn->error;
+                            echo "Erro de conexão com o banco de dados.";
                         }
                     } else {
-                        echo "Erro de conexão com o banco de dados.";
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
                     }
-                    
-                    // Faça o que quiser com o ID, por exemplo, exiba-o
-                    //echo "O ID é: " . $id;
-                } else {
-                    // Se 'id' não estiver presente na URL
-                    echo "O parâmetro 'id' não foi encontrado na URL.";
-                }
-    
-    
-                break;
-            default:
-                echo "Operação inválida!";
+                    break;
+
+                default:
+                    echo "Operação inválida!";
             }
+            break;
 
         case 'funcionario':
-            switch ($operacao){
-                case "inserir":
-                    if ($tabela = 'funcionario') {
-                        // Verificar se o formulário foi submetido
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $cpf = $_POST['cpf'];
-                            $nome = $_POST['nome'];
-                            $telefone = $_POST['telefone'];
-                            $rg = $_POST['rg'];
-                            $cargo = $_POST['idcargo'];
+            switch ($operacao) {
+                case 'inserir':
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $cpf = $_POST['cpf'];
+                        $nome = $_POST['nome'];
+                        $telefone = $_POST['telefone'];
+                        $rg = $_POST['rg'];
+                        $cargo = $_POST['idcargo'];
 
-                            $sql = "INSERT INTO funcionario (cpf, nome, telefone, rg, idCargo) VALUES ('$cpf', '$nome', '$telefone', '$rg','$cargo')";
-                            
-                            if ($conn) {
-                                if ($conn->query($sql) === TRUE) {
-                                    header("Location: cadastro_funcionario.php");
-                                } else {
-                                    echo "Erro ao salvar os dados: " . $conn->error;
-                                }
+                        $sql = "INSERT INTO funcionario (cpf, nome, telefone, rg, idCargo) VALUES ('$cpf', '$nome', '$telefone', '$rg','$cargo')";
+                        
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_funcionario.php");
+                                exit();
                             } else {
-                                echo "Erro de conexão com o banco de dados.";
+                                echo "Erro ao salvar os dados: " . $conn->error;
                             }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
                         }
                     }
-            
-            break;        
-            case 'editar':
-            
-            break;
-            case 'excluir':
-                if(isset($_GET['id'])) {
-                    // Sanitize (limpeza) o valor do ID para evitar ataques de injeção de SQL
-                    $id = htmlspecialchars($_GET['id']);
+                    break;
 
-                    $sql = "DELETE FROM cargo WHERE idcargo =".$id;
-                    
+                case 'editar':
+                    // Código para editar
+                    break;
 
-                    if ($conn) {
-                        if ($conn->query($sql) === TRUE) {
-                            header("Location: cadastro_cargo.php");
-                            echo  "<script>alert('Excluído com Sucesso!);</script>";
+                case 'excluir':
+                    if (isset($_GET['idfunc'])) {
+                        $id = htmlspecialchars($_GET['idfunc']);
+
+                        $sql = "DELETE FROM funcionario WHERE cpf =".$id;
+
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_funcionario.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
                         } else {
-                            echo "Erro ao salvar os dados: " . $conn->error;
+                            echo "Erro de conexão com o banco de dados.";
                         }
                     } else {
-                        echo "Erro de conexão com o banco de dados.";
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
                     }
-                    
-                    // Faça o que quiser com o ID, por exemplo, exiba-o
-                    //echo "O ID é: " . $id;
-                } else {
-                    // Se 'id' não estiver presente na URL
-                    echo "O parâmetro 'id' não foi encontrado na URL.";
-                }
+                    break;
 
+                default:
+                    echo "Operação inválida!";
+            }
+            break;
 
-                break;
-            default:
-                echo "Operação inválida!";
+        case 'fornecedor':
+            switch ($operacao) {
+                case 'inserir':
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $cnpj = $_POST['cnpj'];
+                        $empresa = $_POST['empresa'];
+                        $telefone = $_POST['telefone'];
+
+                        $sql = "INSERT INTO fornecedor (cnpj, nome_empresa, telefone) VALUES ('$cnpj', '$empresa', '$telefone')";
+                        
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_fornecedor.php");
+                                exit();
+                            } else {
+                                echo "Erro ao salvar os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    }
+                    break;
+
+                case 'editar':
+                    // Código para editar
+                    break;
+
+                case 'excluir':
+                    if (isset($_GET['id'])) {
+                        $id = htmlspecialchars($_GET['id']);
+
+                        $sql = "DELETE FROM fornecedor WHERE cnpj =".$id;
+
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_fornecedor.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    } else {
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
+                    }
+                    break;
+
+                default:
+                    echo "Operação inválida!";
+            }
+            break;
+
+        case 'cliente':
+            switch ($operacao) {
+                case 'inserir':
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $cpf = $_POST['cpf'];
+                        $nome = $_POST['nome'];
+                        $email = $_POST['email'];
+                        $rg = $_POST['rg'];
+                        $telefone = $_POST['telefone'];
+
+                        $sql = "INSERT INTO cliente (cpf, nome, telefone, rg, email) VALUES ('$cpf', '$nome', '$telefone', '$rg','$email')";
+                        
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_cliente.php");
+                                exit();
+                            } else {
+                                echo "Erro ao salvar os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    }
+                    break;
+
+                case 'editar':
+                    // Código para editar
+                    break;
+
+                case 'excluir':
+                    if (isset($_GET['id'])) {
+                        $id = htmlspecialchars($_GET['id']);
+
+                        $sql = "DELETE FROM cliente WHERE cpf =".$id;
+
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_cliente.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    } else {
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
+                    }
+                    break;
+
+                default:
+                    echo "Operação inválida!";
+            }
+            break;
+
+        case 'receita':
+            switch ($operacao) {
+                case 'inserir':
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $tipo = $_POST['tipo'];
+                        $cpf = $_POST['cpfcliente'];
+
+                        $sql = "INSERT INTO receita (tipo, cpfCliente) VALUES ('$tipo', '$cpf')";
+                        
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_receita.php");
+                                exit();
+                            } else {
+                                echo "Erro ao salvar os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    }
+                    break;
+
+                case 'editar':
+                    // Código para editar
+                    break;
+
+                case 'excluir':
+                    if (isset($_GET['id'])) {
+                        $id = htmlspecialchars($_GET['id']);
+
+                        $sql = "DELETE FROM receita WHERE idReceita =".$id;
+
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_receita.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    } else {
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
+                    }
+                    break;
+
+                default:
+                    echo "Operação inválida!";
+            }
+            break;
+
+        default:
+            echo "Tabela inválida!";
     }
 }
 $conn->close();
 
-}
