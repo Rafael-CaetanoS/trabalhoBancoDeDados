@@ -107,7 +107,7 @@
                   echo "<td>" . $row["idProduto"] . "</td>";
                   echo "<td>" . $row["nome"] . "</td>";
                   echo "<td>" . $row["descricao"] . "</td>";
-                  echo "<td>" . $row["qtde"] . "</td>";
+                  echo "<td>" . $row["valor"] . "</td>";
                   echo "<td>" . $row["idCat_produto"] . "</td>";
                   echo "<td>" . $row["idPromocao"] . "</td>";
                   echo "<td>
@@ -148,8 +148,8 @@
                         <input type="text" class="form-control" id="descricao" name="descricao" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="qtde" class="form-label">Inserir quantidade</label>
-                        <input type="number" class="form-control" id="qtde" name="qtde" required>
+                        <label for="valor" class="form-label">Inserir valor</label>
+                        <input type="number" class="form-control" id="valor" name="valor" required>
                     </div>
 
                     <div class="col-md-4">

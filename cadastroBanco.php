@@ -564,12 +564,12 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                         // Recupera os dados do formulário
                         $nome = $_POST['nome'];
                         $descricao = $_POST['descricao'];
-                        $qtde = $_POST['qtde'];
+                        $valor = $_POST['valor'];
                         $idCat_produto = $_POST['idCat_produto'];
                         $idPromocao = $_POST['idPromocao'];
                     
                         // Insere os dados no banco de dados
-                        $sql = "INSERT INTO produto (nome, descricao, qtde, idCat_produto, idPromocao) VALUES ('$nome','$descricao','$qtde','$idCat_produto','$idPromocao')";
+                        $sql = "INSERT INTO produto (nome, descricao, valor, idCat_produto, idPromocao) VALUES ('$nome','$descricao','$valor','$idCat_produto','$idPromocao')";
                         
                         // Verifica se a conexão está estabelecida antes de executar a consulta
                         if ($conn) {
