@@ -81,12 +81,13 @@
     <div class="container-fluid mt-4" id="tabela">
       <div class="container ">
         <div class="fundoTabela">
-          <h2 class="titulo1">Dados da Compra do Fornecedor</h2>
+          <h2 class="titulo1">Dados da Compra</h2>
           <table class="table table-striped w-75 mx-auto">
             <thead>
               <tr>
                 <th scope="col-3">Id</th>
                 <th scope="col-3">Fornecedor</th>
+                <th scope="col-3">Data</th>
                 <th scope="col-1" style="width: 200px;">Ações</th>
               </tr>
             </thead>
@@ -94,17 +95,18 @@
             <tbody class="table-group-divider">
               <?php
                 include ("config.php");
-              $sql = "select * from compra_produtos_has_fornecedor";
+              $sql = "select cp.idCompra, cp.dt_compra, f.nome_empresa as nome from compra_produtos cp inner join fornecedor f on cp.Fornecedor_cnpj = f.cnpj;";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {
                 foreach ($result as $row) {
                   echo "<tr>";
-                  echo "<td>" . $row["idCcompra_produtos_idcompra"] . "</td>";
-                  echo "<td>" . $row["fornecedor_cnpj"] . "</td>";
+                  echo "<td>" . $row["idCompra"] . "</td>";
+                  echo "<td>" . $row["nome"] . "</td>";
+                  echo "<td>" . $row["dt_compra"] . "</td>";
                   echo "<td>
                     <button type='button' class='btn btn-primary' id='editar'>Editar</button>
-                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=compra_produtos_has_fornecedorgo&id=".$row['idCcompra_produtos_idcompra']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
+                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=compra_produtos&id=".$row['idCompra']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
                   </td>";
 
                   echo "</tr>";
@@ -129,19 +131,35 @@
     <div class="container-fluid" style="display:none" id="cadastro">
         <div class="formulario">
             <div class="formularioDados">
-                <h2 class="titulo">Dados da Compra do Fornecedor</h2>
-                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=item_compra" method="post">
+                <h2 class="titulo">Dados da Compra</h2>
+                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=compra_produtos" method="post">
                     <div class="col-md-4">
-                        <label for="descricao" class="form-label">Inserir nome do produto</label>
-                        <input type="text" class="form-control" id="nome_produto" name="nome_produto" required>
+                        <label for="dt_compra" class="form-label">Inserir data</label>
+                        <input type="date" class="form-control" id="dt_compra" name="dt_compra" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="salario" class="form-label">Quantidade do produto</label>
-                        <input type="number" class="form-control" id="qtde" name="qtde" required>
+                    <label for="fornecedor_cnpj" class="form-label">Selecione o fornecedor</label>
+                        <select class="form-select" id="fornecedor_cnpj" name="fornecedor_cnpj" required>
+                            <option value="" selected disabled>Selecione</option>
+                            <?php
+                            include ("config.php");
+                            $sql = "SELECT cnpj, nome_empresa FROM fornecedor";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["cnpj"] . '">' . $row["nome_empresa"] . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">Nenhum cargo disponível</option>';
+                            }
+                            $conn->close();
+                            ?>
+                        </select>
                     </div>
                     <div class="row"> 
                         <div class="col-md-6">
-                            <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Comprar</button>   
+                            <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   
                         </div>
                         <div class="col-md-6">
                             <button class="btn btn-danger mt-3 mb-2 col-md-12" id="cancelar" type="button">Cancelar</button>
