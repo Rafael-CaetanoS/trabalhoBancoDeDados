@@ -81,13 +81,12 @@
     <div class="container-fluid mt-4" id="tabela">
       <div class="container ">
         <div class="fundoTabela">
-          <h2 class="titulo1">Dados da Compra</h2>
+          <h2 class="titulo1">Dados da Entrega</h2>
           <table class="table table-striped w-75 mx-auto">
             <thead>
               <tr>
-                <th scope="col-3">Id</th>
-                <th scope="col-3">Fornecedor</th>
-                <th scope="col-3">Data</th>
+                <th scope="col-3">Id da Venda</th>
+                <th scope="col-3">Tipo de Entrega</th>
                 <th scope="col-1" style="width: 200px;">Ações</th>
               </tr>
             </thead>
@@ -95,18 +94,17 @@
             <tbody class="table-group-divider">
               <?php
                 include ("config.php");
-              $sql = "select cp.idCompra, cp.dt_compra, f.nome_empresa as nome from compra_produtos cp inner join fornecedor f on cp.Fornecedor_cnpj = f.cnpj";
+              $sql = "select * from entrega";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {
                 foreach ($result as $row) {
                   echo "<tr>";
-                  echo "<td>" . $row["idCompra"] . "</td>";
-                  echo "<td>" . $row["nome"] . "</td>";
-                  echo "<td>" . $row["dt_compra"] . "</td>";
+                  echo "<td>" . $row["idVenda"] . "</td>";
+                  echo "<td>" . $row["idtipo_Entrega"] . "</td>";
                   echo "<td>
                     <button type='button' class='btn btn-primary' id='editar'>Editar</button>
-                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=compra_produtos&id=".$row['idCompra']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
+                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=entrega&id=".$row['idEntrega']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
                   </td>";
 
                   echo "</tr>";
@@ -121,7 +119,7 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Cadastrar Compra</button>
+            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Cadastrar Entrega</button>
           </div>  
         </div>
       </div>
@@ -131,27 +129,27 @@
     <div class="container-fluid" style="display:none" id="cadastro">
         <div class="formulario">
             <div class="formularioDados">
-                <h2 class="titulo">Dados da Compra</h2>
-                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=compra_produtos" method="post">
+                <h2 class="titulo">Realizar Entrega</h2>
+                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=entrega" method="post">
                     <div class="col-md-4">
-                        <label for="dt_compra" class="form-label">Inserir data</label>
-                        <input type="date" class="form-control" id="dt_compra" name="dt_compra" required>
+                        <label for="idvenda" class="form-label">Inserir número da Venda</label>
+                        <input type="text" class="form-control" id="idvenda" name="idvenda" required>
                     </div>
                     <div class="col-md-4">
-                    <label for="fornecedor_cnpj" class="form-label">Selecione o fornecedor</label>
-                        <select class="form-select" id="fornecedor_cnpj" name="fornecedor_cnpj" required>
-                            <option value="" selected disabled>Selecione</option>
+                    <label for="idpagamento" class="form-label">Selecione o tipo de Entrega</label>
+                        <select class="form-select" id="idtipoentrega" name="idtipoentrega" required>
+                            <option value="" selected disabled>Selecione o tipo de Entrega</option>
                             <?php
                             include ("config.php");
-                            $sql = "SELECT cnpj, nome_empresa FROM fornecedor";
+                            $sql = "SELECT idTipo_entrega, descricao FROM tipo_entrega";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["cnpj"] . '">' . $row["nome_empresa"] . '</option>';
+                                    echo '<option value="' . $row["idTipo_entrega"] . '">' . $row["descricao"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum tipo de entrega cadastrada</option>';
                             }
                             $conn->close();
                             ?>

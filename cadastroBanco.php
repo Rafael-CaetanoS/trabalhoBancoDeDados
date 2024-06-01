@@ -446,60 +446,60 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
             }
             break;
 
-            case 'cat_produto':
-                switch ($operacao) {
-                    case 'inserir':
-                        // Verificar se o formulário foi submetido
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            // Recupera os dados do formulário
-                            $tipo = $_POST['tipo'];
+        case 'cat_produto':
+            switch ($operacao) {
+                case 'inserir':
+                    // Verificar se o formulário foi submetido
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        // Recupera os dados do formulário
+                        $tipo = $_POST['tipo'];
+                    
+                        // Insere os dados no banco de dados
+                        $sql = "INSERT INTO cat_produto (tipo) VALUES ('$tipo')";
                         
-                            // Insere os dados no banco de dados
-                            $sql = "INSERT INTO cat_produto (tipo) VALUES ('$tipo')";
-                            
-                            // Verifica se a conexão está estabelecida antes de executar a consulta
-                            if ($conn) {
-                                if ($conn->query($sql) === TRUE) {
-                                    header("Location: cadastro_categoria.php");
-                                    exit();
-                                } else {
-                                    echo "Erro ao salvar os dados: " . $conn->error;
-                                }
+                        // Verifica se a conexão está estabelecida antes de executar a consulta
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_categoria.php");
+                                exit();
                             } else {
-                                echo "Erro de conexão com o banco de dados.";
-                            }
-                        }
-                        break;
-    
-                    case 'editar':
-                        // Código para editar
-                        break;
-    
-                    case 'excluir':
-                        if (isset($_GET['id'])) {
-                            $id = htmlspecialchars($_GET['id']);
-        
-                            $sql = "DELETE FROM cat_produto WHERE idCat_produto =".$id;
-        
-                            if ($conn) {
-                                if ($conn->query($sql) === TRUE) {
-                                    header("Location: cadastro_categoria.php");
-                                    exit();
-                                } else {
-                                    echo "Erro ao excluir os dados: " . $conn->error;
-                                }
-                            } else {
-                                echo "Erro de conexão com o banco de dados.";
+                                echo "Erro ao salvar os dados: " . $conn->error;
                             }
                         } else {
-                            echo "O parâmetro 'id' não foi encontrado na URL.";
+                            echo "Erro de conexão com o banco de dados.";
                         }
-                        break;
+                    }
+                    break;
+
+                case 'editar':
+                    // Código para editar
+                    break;
+
+                case 'excluir':
+                    if (isset($_GET['id'])) {
+                        $id = htmlspecialchars($_GET['id']);
     
-                    default:
-                        echo "Operação inválida!";
-                }
-                break;
+                        $sql = "DELETE FROM cat_produto WHERE idCat_produto =".$id;
+    
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: cadastro_categoria.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    } else {
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
+                    }
+                    break;
+
+                default:
+                    echo "Operação inválida!";
+            }
+            break;
 
         case 'forma_pagamento':
             switch ($operacao) {
@@ -728,10 +728,235 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
             }
             break;
 
-        default:
-            echo "Operação inválida!";
-    }
+        case 'tipo_entrega':
+            switch ($operacao) {
+                case 'inserir':
+                    // Verificar se o formulário foi submetido
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        // Recupera os dados do formulário
+                        $descricao = $_POST['descricao'];
+                    
+                        // Insere os dados no banco de dados
+                        $sql = "INSERT INTO tipo_entrega (descricao) VALUES ('$descricao')";
+                        
+                        // Verifica se a conexão está estabelecida antes de executar a consulta
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: tipo_entrega.php");
+                                exit();
+                            } else {
+                                echo "Erro ao salvar os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    }
+                    break;
+
+                case 'editar':
+                    // Código para editar
+                    break;
+
+                case 'excluir':
+                    if (isset($_GET['id'])) {
+                        $id = htmlspecialchars($_GET['id']);
+
+                        $sql = "DELETE FROM tipo_entrega WHERE idTipo_entrega =".$id;
+
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: tipo_entrega.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    } else {
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
+                    }
+                    break;
+
+                default:
+                    echo "Operação inválida!";
+            }
+            break;
+            
+                    
+        case 'venda':
+        switch ($operacao) {
+            case 'inserir':
+                // Verificar se o formulário foi submetido
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Recupera os dados do formulário
+                    $idvenda = $_POST['idVenda'];
+                    $dt_venda = $_POST['dt_venda'];
+                    $qtde = $_POST['qtde'];
+                    $valortotal = $_POST['valorTotal'];
+                    $cpffuncionario = $_POST['cpfFuncionario'];
+                    $cliente = $_POST['cpfCliente'];
+                    $iddesconto = $_POST['idDesconto'];
+                    $idestoque = $_POST['Estoque_idEstoque'];
+
+                    // Insere os dados no banco de dados
+                    $sql = "INSERT INTO venda (idVenda, dt_venda, qtde, valorTotal, cpfFuncionario, cpfCliente, idDesconto, Estoque_idEstoque) VALUES ('$idvenda', '$dt_venda', '$qtde', '$valortotal', '$cpffuncionario', '$cliente', '$iddesconto', '$idestoque')";
+                    
+                    // Verifica se a conexão está estabelecida antes de executar a consulta
+                    if ($conn) {
+                        if ($conn->query($sql) === TRUE) {
+                            header("Location: venda.php");
+                            exit();
+                        } else {
+                            echo "Erro ao salvar os dados: " . $conn->error;
+                        }
+                    } else {
+                        echo "Erro de conexão com o banco de dados.";
+                    }
+                }
+                break;
+
+            case 'editar':
+                // Código para editar
+                break;
+
+            case 'excluir':
+                if (isset($_GET['id'])) {
+                    $id = htmlspecialchars($_GET['id']);
+
+                    $sql = "DELETE FROM venda WHERE idVenda =".$id;
+
+                    if ($conn) {
+                        if ($conn->query($sql) === TRUE) {
+                            header("Location: venda.php");
+                            exit();
+                        } else {
+                            echo "Erro ao excluir os dados: " . $conn->error;
+                        }
+                    } else {
+                        echo "Erro de conexão com o banco de dados.";
+                    }
+                } else {
+                    echo "O parâmetro 'id' não foi encontrado na URL.";
+                }
+                break;
+            default:
+                echo "Operação inválida!";
+        }
+
+        case 'entrega':
+            switch ($operacao) {
+                case 'inserir':
+                    // Verificar se o formulário foi submetido
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        // Recupera os dados do formulário
+                        $idvenda = $_POST['idvenda'];
+                        $idtipoentrega = $_POST['idtipoentrega'];
+                    
+                        // Insere os dados no banco de dados
+                        $sql = "INSERT INTO pagamento (idVenda, idTipo_Entrega) VALUES ('$idvenda', '$idtipoentrega')";
+                        
+                        // Verifica se a conexão está estabelecida antes de executar a consulta
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: entrega.php");
+                                exit();
+                            } else {
+                                echo "Erro ao salvar os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    }
+                    break;
+
+                case 'editar':
+                    // Código para editar
+                    break;
+
+                case 'excluir':
+                    if (isset($_GET['id'])) {
+                        $id = htmlspecialchars($_GET['id']);
+
+                        $sql = "DELETE FROM entrega WHERE idEntrega =".$id;
+
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: entrega.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    } else {
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
+                    }
+                    break;
+
+                default:
+                    echo "Operação inválida!";
+            }
+            break;
+        case 'pagamento':
+            switch ($operacao) {
+                case 'inserir':
+                    // Verificar se o formulário foi submetido
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        // Recupera os dados do formulário
+                        $idvenda = $_POST['idvenda'];
+                        $idpagamento = $_POST['idpagamento'];
+                    
+                        // Insere os dados no banco de dados
+                        $sql = "INSERT INTO pagamento (idVenda, idForma_pagamento) VALUES ('$idvenda', '$idpagamento')";
+                        
+                        // Verifica se a conexão está estabelecida antes de executar a consulta
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: pagamento.php");
+                                exit();
+                            } else {
+                                echo "Erro ao salvar os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    }
+                    break;
+
+                case 'editar':
+                    // Código para editar
+                    break;
+
+                case 'excluir':
+                    if (isset($_GET['id'])) {
+                        $id = htmlspecialchars($_GET['id']);
+
+                        $sql = "DELETE FROM pagamento WHERE idPagamento =".$id;
+
+                        if ($conn) {
+                            if ($conn->query($sql) === TRUE) {
+                                header("Location: pagamento.php");
+                                exit();
+                            } else {
+                                echo "Erro ao excluir os dados: " . $conn->error;
+                            }
+                        } else {
+                            echo "Erro de conexão com o banco de dados.";
+                        }
+                    } else {
+                        echo "O parâmetro 'id' não foi encontrado na URL.";
+                    }
+                    break;
+
+                default:
+                    echo "Operação inválida!";
+            }
+            break;
+
 
 }
 $conn->close();
 
+}

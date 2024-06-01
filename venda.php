@@ -81,13 +81,18 @@
     <div class="container-fluid mt-4" id="tabela">
       <div class="container ">
         <div class="fundoTabela">
-          <h2 class="titulo1">Dados da Compra</h2>
+          <h2 class="titulo1">Dados da Venda</h2>
           <table class="table table-striped w-75 mx-auto">
             <thead>
               <tr>
                 <th scope="col-3">Id</th>
-                <th scope="col-3">Fornecedor</th>
-                <th scope="col-3">Data</th>
+                <th scope="col-3">Data da Venda</th>
+                <th scope="col-3">Quantidade</th>
+                <th scope="col-3">CPF Cliente</th>
+                <th scope="col-3">CPF Funcionário</th>
+                <th scope="col-3">Id Estoque</th>  
+                <th scope="col-3">Id Desconto</th>
+                <th scope="col-3">Valor Total</th>
                 <th scope="col-1" style="width: 200px;">Ações</th>
               </tr>
             </thead>
@@ -95,18 +100,23 @@
             <tbody class="table-group-divider">
               <?php
                 include ("config.php");
-              $sql = "select cp.idCompra, cp.dt_compra, f.nome_empresa as nome from compra_produtos cp inner join fornecedor f on cp.Fornecedor_cnpj = f.cnpj";
+              $sql = "select * from venda";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {
                 foreach ($result as $row) {
                   echo "<tr>";
-                  echo "<td>" . $row["idCompra"] . "</td>";
-                  echo "<td>" . $row["nome"] . "</td>";
-                  echo "<td>" . $row["dt_compra"] . "</td>";
+                  echo "<td>" . $row["idVenda"] . "</td>";
+                  echo "<td>" . $row["dt_venda"] . "</td>";
+                  echo "<td>" . $row["qtde"] . "</td>";
+                  echo "<td>" . $row["cpfCliente"] . "</td>";
+                  echo "<td>" . $row["cpfFuncionario"] . "</td>";
+                  echo "<td>" . $row["Estoque_idEstoque"] . "</td>";
+                  echo "<td>" . $row["idDesconto"] . "</td>";
+                  echo "<td>" . $row["valorTotal"] . "</td>";
                   echo "<td>
                     <button type='button' class='btn btn-primary' id='editar'>Editar</button>
-                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=compra_produtos&id=".$row['idCompra']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
+                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=venda&id=".$row['idVenda']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
                   </td>";
 
                   echo "</tr>";
@@ -121,7 +131,7 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Cadastrar Compra</button>
+            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Cadastrar Venda</button>
           </div>  
         </div>
       </div>
@@ -131,24 +141,30 @@
     <div class="container-fluid" style="display:none" id="cadastro">
         <div class="formulario">
             <div class="formularioDados">
-                <h2 class="titulo">Dados da Compra</h2>
-                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=compra_produtos" method="post">
+                <h2 class="titulo">Dados da Venda</h2>
+                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=venda" method="post">
                     <div class="col-md-4">
-                        <label for="dt_compra" class="form-label">Inserir data</label>
-                        <input type="date" class="form-control" id="dt_compra" name="dt_compra" required>
+                        <label for="dt_venda" class="form-label">Inserir data venda</label>
+                        <input type="text" class="form-control" id="dt_venda" name="dt_venda" required>
                     </div>
+
                     <div class="col-md-4">
-                    <label for="fornecedor_cnpj" class="form-label">Selecione o fornecedor</label>
-                        <select class="form-select" id="fornecedor_cnpj" name="fornecedor_cnpj" required>
+                        <label for="qtde" class="form-label">Inserir quantidade</label>
+                        <input type="number" class="form-control" id="qtde" name="qtde" required>
+                    </div>
+                    
+                    <div class="col-md-4">
+                    <label for="cpfCliente" class="form-label">Inserir o CPF do cliente</label>
+                        <select class="form-select" id="cpfCliente" name="cpfCliente" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
                             include ("config.php");
-                            $sql = "SELECT cnpj, nome_empresa FROM fornecedor";
+                            $sql = "SELECT * FROM cliente";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["cnpj"] . '">' . $row["nome_empresa"] . '</option>';
+                                    echo '<option value="' . $row["cpfCliente"] . '">' . $row["cpfCliente"] . '</option>';
                                 }
                             } else {
                                 echo '<option value="">Nenhum cargo disponível</option>';
@@ -157,6 +173,75 @@
                             ?>
                         </select>
                     </div>
+
+                    <div class="col-md-4">
+                    <label for="cpfFuncionario" class="form-label">Inserir o CPF do funcionário</label>
+                        <select class="form-select" id="cpfFuncionario" name="cpfFuncionario" required>
+                            <option value="" selected disabled>Selecione</option>
+                            <?php
+                            include ("config.php");
+                            $sql = "SELECT * FROM funcionario";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["cpfFuncionario"] . '">' . $row["cpfFuncionario"] . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">Nenhum cargo disponível</option>';
+                            }
+                            $conn->close();
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                    <label for="Estoque_idEstoque" class="form-label">Inserir o id do estoque</label>
+                        <select class="form-select" id="Estoque_idEstoque" name="Estoque_idEstoque" required>
+                            <option value="" selected disabled>Selecione</option>
+                            <?php
+                            include ("config.php");
+                            $sql = "SELECT * FROM estoque";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["idEstoque"] . '">' . $row["idEstoque"] . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">Nenhum cargo disponível</option>';
+                            }
+                            $conn->close();
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                    <label for="idDesconto" class="form-label">Inserir o id do desconto</label>
+                        <select class="form-select" id="idDesconto" name="idDesconto" required>
+                            <option value="" selected disabled>Selecione</option>
+                            <?php
+                            include ("config.php");
+                            $sql = "SELECT * FROM desconto";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["idDesconto"] . '">' . $row["valor"] . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">Nenhum cargo disponível</option>';
+                            }
+                            $conn->close();
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="valorTotal" class="form-label">Inserir valor total</label>
+                        <input type="number" class="form-control" id="valorTotal" name="valorTotal" required>
+                    </div>
+
                     <div class="row"> 
                         <div class="col-md-6">
                             <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   
