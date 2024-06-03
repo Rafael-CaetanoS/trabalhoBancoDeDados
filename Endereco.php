@@ -110,7 +110,7 @@
                   echo "<td>" . $row["cep"] . "</td>";
                   echo "<td>" . $row["cpfCliente"] . "</td>";
                   echo "<td>
-                    <button type='button' class='btn btn-primary' id='editar'>Editar</button>
+                    <button type='button' class='btn btn-primary' onclick=\"location.href='editar_endereco.php?id=".$row['idEndereco']."'\" id='editar' >Editar</button>
                     <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=endereco&id=".$row['idEndereco']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
                   </td>";
 
@@ -140,7 +140,7 @@
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=endereco" method="post">
                     <div class="col-md-4">
                         <label for="rua" class="form-label">Rua</label>
-                        <input type="number" class="form-control" id="rua" name="rua" required>
+                        <input type="text" class="form-control" id="rua" name="rua" required>
                     </div>
                     <div class="col-md-4">
                         <label for="numero" class="form-label">Numero</label>
@@ -158,8 +158,8 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="idCliente" class="form-label">Selecione o Cliente</label>
-                        <select class="form-select" id="idCliente" name="idCliente" required>
+                    <label for="cpfCliente" class="form-label">Selecione o Cliente</label>
+                        <select class="form-select" id="cpfCliente" name="cpfCliente" required>
                             <option value="" selected disabled>Selecione um Cliente</option>
                             <?php
                             include ("config.php");

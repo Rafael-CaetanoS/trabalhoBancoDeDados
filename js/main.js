@@ -1,5 +1,6 @@
 var tabela = document.getElementById("tabela");
 var cadastrar = document.getElementById("cadastrar");
+var editar = document.getElementById("editar");
 var cancelarcadastro = document.getElementById("cancelar");
 
 
@@ -9,6 +10,7 @@ function displayTabela(){
         cadastro.style.display = "block";
     });
 }
+
 function cancelar(){
     cancelarcadastro.addEventListener('click', ()=>{
         tabela.style.display = "block";

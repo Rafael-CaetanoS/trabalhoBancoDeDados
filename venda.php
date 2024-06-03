@@ -145,7 +145,7 @@
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=venda" method="post">
                     <div class="col-md-4">
                         <label for="dt_venda" class="form-label">Inserir data venda</label>
-                        <input type="text" class="form-control" id="dt_venda" name="dt_venda" required>
+                        <input type="date" class="form-control" id="dt_venda" name="dt_venda" required>
                     </div>
 
                     <div class="col-md-4">
@@ -164,7 +164,7 @@
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["cpfCliente"] . '">' . $row["cpfCliente"] . '</option>';
+                                    echo '<option value="' . $row["cpf"] . '">' . $row["nome"] . '</option>';
                                 }
                             } else {
                                 echo '<option value="">Nenhum cargo disponível</option>';
@@ -185,7 +185,7 @@
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["cpfFuncionario"] . '">' . $row["cpfFuncionario"] . '</option>';
+                                    echo '<option value="' . $row["cpf"] . '">' . $row["cpf"] . '</option>';
                                 }
                             } else {
                                 echo '<option value="">Nenhum cargo disponível</option>';

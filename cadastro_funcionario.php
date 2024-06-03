@@ -110,7 +110,7 @@
                   echo "<td>" . $row["telefone"] . "</td>";
                   echo "<td>" . $row["idCargo"] . "</td>";
                   echo "<td>
-                    <button type='button' class='btn btn-primary' id='editar'>Editar</button>
+                    <button type='button' class='btn btn-primary' onclick=\"location.href='editar_funcionario.php?id=".$row['cpf']."'\" id='editar'>Editar</button>
                     <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=funcionario&idfunc=".$row['cpf']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
                   </td>";
 
@@ -134,61 +134,61 @@
 
 
     <div class="container-fluid" style="display:none" id="cadastro">
-        <div class="formulario">
-            <div class="formularioDados">
-                <h2 class="titulo">Cadastro Funcionário</h2>
-                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=funcionario" method="post">
-                    <div class="col-md-4">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="cpf" class="form-label">Cpf</label>
-                        <input type="number" class="form-control" id="cpf" name="cpf" required>
-                    </div>
+      <div class="formulario">
+          <div class="formularioDados">
+              <h2 class="titulo">Cadastro Funcionário</h2>
+              <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=funcionario" method="post">
+                  <div class="col-md-4">
+                      <label for="nome" class="form-label">Nome</label>
+                      <input type="text" class="form-control" id="nome" name="nome" required>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="cpf" class="form-label">Cpf</label>
+                      <input type="number" class="form-control" id="cpf" name="cpf" required>
+                  </div>
 
-                    <div class="col-md-4">
-                        <label for="rg" class="form-label">Rg</label>
-                        <input type="number" class="form-control" id="rg" name="rg" required>
-                    </div>
+                  <div class="col-md-4">
+                      <label for="rg" class="form-label">Rg</label>
+                      <input type="number" class="form-control" id="rg" name="rg" required>
+                  </div>
 
-                    <div class="col-md-4">
-                        <label for="telefone" class="form-label">Telefone</label>
-                        <input type="text" class="form-control" id="telefone" name="telefone" required>
-                    </div>
+                  <div class="col-md-4">
+                      <label for="telefone" class="form-label">Telefone</label>
+                      <input type="text" class="form-control" id="telefone" name="telefone" required>
+                  </div>
 
-                    <div class="col-md-4">
-                    <label for="idcargo" class="form-label">Selecione o cargo</label>
-                        <select class="form-select" id="idcargo" name="idcargo" required>
-                            <option value="" selected disabled>Selecione um cargo</option>
-                            <?php
-                            include ("config.php");
-                            $sql = "SELECT idCargo, descricao FROM cargo";
-                            $result = $conn->query($sql);
+                  <div class="col-md-4">
+                  <label for="idcargo" class="form-label">Selecione o cargo</label>
+                      <select class="form-select" id="idcargo" name="idcargo" required>
+                          <option value="" selected disabled>Selecione um cargo</option>
+                          <?php
+                          include ("config.php");
+                          $sql = "SELECT idCargo, descricao FROM cargo";
+                          $result = $conn->query($sql);
 
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["idCargo"] . '">' . $row["descricao"] . '</option>';
-                                }
-                            } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
-                            }
-                            $conn->close();
-                            ?>
-                        </select>
-                    </div>
+                          if ($result->num_rows > 0) {
+                              while($row = $result->fetch_assoc()) {
+                                  echo '<option value="' . $row["idCargo"] . '">' . $row["descricao"] . '</option>';
+                              }
+                          } else {
+                              echo '<option value="">Nenhum cargo disponível</option>';
+                          }
+                          $conn->close();
+                          ?>
+                      </select>
+                  </div>
 
-                    <div class="row"> 
-                        <div class="col-md-6">
-                            <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-danger mt-3 mb-2 col-md-12" id="cancelar" type="button">Cancelar</button>
-                        </div>
-                    </div>                
-                </form>
-            </div>
-        </div>
+                  <div class="row"> 
+                      <div class="col-md-6">
+                          <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   
+                      </div>
+                      <div class="col-md-6">
+                          <button class="btn btn-danger mt-3 mb-2 col-md-12" id="cancelar" type="button">Cancelar</button>
+                      </div>
+                  </div>                
+              </form>
+          </div>
+      </div>
     </div>
 
 

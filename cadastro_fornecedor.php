@@ -105,7 +105,7 @@
                   echo "<td>" . $row["nome_empresa"] . "</td>";
                   echo "<td>" . $row["telefone"] . "</td>";
                   echo "<td>
-                    <button type='button' class='btn btn-primary' id='editar'>Editar</button>
+                  <button type='button' class='btn btn-primary' onclick=\"location.href='editar_fornecedor.php?id=".$row['cnpj']."'\" id='editar' >Editar</button>
                     <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=fornecedor&id=".$row['cnpj']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
                   </td>";
 
