@@ -114,8 +114,8 @@
         </div>
     </div>
     </main>
-    <footer>
-        <p>powerby: RAFAEL, LARISSA e EMILIA</p>
+    <footer class="footer">
+      <p class="pt-3">powerby: RAFAEL, LARISSA e EMILIA</p>
     </footer>
 
   
