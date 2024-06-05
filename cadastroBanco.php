@@ -1086,7 +1086,6 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                 // Verificar se o formulário foi submetido
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Recupera os dados do formulário
-                    $idvenda = $_POST['idVenda'];
                     $dt_venda = $_POST['dt_venda'];
                     $qtde = $_POST['qtde'];
                     $valortotal = $_POST['valorTotal'];
@@ -1096,7 +1095,7 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                     $idestoque = $_POST['Estoque_idEstoque'];
 
                     // Insere os dados no banco de dados
-                    $sql = "INSERT INTO venda (idVenda, dt_venda, qtde, valorTotal, cpfFuncionario, cpfCliente, idDesconto, Estoque_idEstoque) VALUES ('$idvenda', '$dt_venda', '$qtde', '$valortotal', '$cpffuncionario', '$cliente', '$iddesconto', '$idestoque')";
+                    $sql = "INSERT INTO venda (dt_venda, qtde, valorTotal, cpfFuncionario, cpfCliente, idDesconto, Estoque_idEstoque) VALUES ('$dt_venda', '$qtde', '$valortotal', '$cpffuncionario', '$cliente', '$iddesconto', '$idestoque')";
                     
                     // Verifica se a conexão está estabelecida antes de executar a consulta
                     if ($conn) {
