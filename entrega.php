@@ -101,7 +101,7 @@
                 foreach ($result as $row) {
                   echo "<tr>";
                   echo "<td>" . $row["idVenda"] . "</td>";
-                  echo "<td>" . $row["idtipo_Entrega"] . "</td>";
+                  echo "<td>" . $row["idTipo_Entrega"] . "</td>";
                   echo "<td>
                   <button type='button' class='btn btn-primary' onclick=\"location.href='editar_entrega.php?id=".$row['idEntrega']."'\" id='editar' >Editar</button>
                     <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=entrega&id=".$row['idEntrega']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
@@ -132,8 +132,8 @@
                 <h2 class="titulo">Realizar Entrega</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=entrega" method="post">
                     <div class="col-md-4">
-                        <label for="idvenda" class="form-label">Inserir número da Venda</label>
-                        <input type="text" class="form-control" id="idvenda" name="idvenda" required>
+                        <label for="idVenda" class="form-label">Inserir número da Venda</label>
+                        <input type="text" class="form-control" id="idVenda" name="idVenda" required>
                     </div>
                     <div class="col-md-4">
                     <label for="idpagamento" class="form-label">Selecione o tipo de Entrega</label>

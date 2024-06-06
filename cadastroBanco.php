@@ -876,7 +876,7 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                             $produtosJson = json_encode($produtosJson);
                             
                             // Insere os dados no banco de dados
-                            $sql = "CALL teste('$dt_compra', '$fornecedor_cnpj', '$produtosJson');";
+                            $sql = "CALL cadastraCompraEstoque('$dt_compra', '$fornecedor_cnpj', '$produtosJson');";
                             // Verifica se a conexão está estabelecida antes de executar a consulta
                             if ($conn) {
                                 if ($conn->query($sql) === TRUE) {
@@ -1106,15 +1106,29 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                     $cliente = $_POST['cpfCliente'];
                     $iddesconto = $_POST['idDesconto'];
                     $idestoque = $_POST['Estoque_idEstoque'];
+                    $tipo_entrega = $_POST['tipo_entrega'];
+                    $forma_pagamento = $_POST['forma_pagamento'];
+
 
                     // Insere os dados no banco de dados
                     $sql = "INSERT INTO venda (dt_venda, qtde, valorTotal, cpfFuncionario, cpfCliente, idDesconto, Estoque_idEstoque) VALUES ('$dt_venda', '$qtde', '$valortotal', '$cpffuncionario', '$cliente', '$iddesconto', '$idestoque')";
+
                     
                     // Verifica se a conexão está estabelecida antes de executar a consulta
                     if ($conn) {
                         if ($conn->query($sql) === TRUE) {
-                            header("Location: venda.php");
-                            exit();
+                            
+                            $last_id = $conn->insert_id;
+                            
+                            $sql2 = "INSERT INTO entrega (idVenda, idTipo_Entrega) VALUES ('$last_id','$tipo_entrega')";
+
+                            $sql3 = "INSERT INTO pagamento (idVenda, idForma_pagamento) VALUES ('$last_id','$forma_pagamento')";
+
+                            if ($conn->query($sql2) === TRUE && $conn->query($sql3) === TRUE) {
+                                header("Location: venda.php");
+                                exit();
+                            }
+
                         } else {
                             echo "Erro ao salvar os dados: " . $conn->error;
                         }
@@ -1158,11 +1172,14 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                     // Verificar se o formulário foi submetido
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // Recupera os dados do formulário
-                        $idvenda = $_POST['idvenda'];
+                        $idVenda = $_POST['idVenda'];
                         $idtipoentrega = $_POST['idtipoentrega'];
+
+                        echo $idVenda;
+                        exit();
                     
                         // Insere os dados no banco de dados
-                        $sql = "INSERT INTO entrega (idVenda, idTipo_Entrega) VALUES ('$idvenda', '$idtipoentrega')";
+                        $sql = "INSERT INTO entrega (idVenda, idTipo_Entrega) VALUES ('$idVenda', '$idtipoentrega')";
                         
                         // Verifica se a conexão está estabelecida antes de executar a consulta
                         if ($conn) {
@@ -1181,10 +1198,10 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                 case 'editar':
                     $id = htmlspecialchars($_GET['id']);
 
-                    $idvenda = $_POST['idVenda'];
+                    $idVenda = $_POST['idVenda'];
                     $idtipoentrega = $_POST['idTipo_Entrega'];
 
-                    $sql = "UPDATE entrega SET idVenda='{$idvenda}', idTipo_Entrega='{$idtipoentrega}'  WHERE idEntrega = ".$id;
+                    $sql = "UPDATE entrega SET idVenda='{$idVenda}', idTipo_Entrega='{$idtipoentrega}'  WHERE idEntrega = ".$id;
                             
 
                     if ($conn) {

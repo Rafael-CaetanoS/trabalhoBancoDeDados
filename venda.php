@@ -238,11 +238,6 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="valorTotal" class="form-label">Inserir valor total</label>
-                        <input type="number" class="form-control" id="valorTotal" name="valorTotal" required>
-                    </div>
-
-                    <div class="col-md-4">
                     <label for="tipo_entrega" class="form-label">Inserir o tipo de entrega</label>
                         <select class="form-select" id="tipo_entrega" name="tipo_entrega" required>
                             <option value="" selected disabled>Selecione</option>
@@ -264,7 +259,7 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="forma_pagamento" class="form-label">Inserir a forma de pagamento</label>
+                      <label for="forma_pagamento" class="form-label">Inserir a forma de pagamento</label>
                         <select class="form-select" id="forma_pagamento" name="forma_pagamento" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -282,6 +277,13 @@
                             $conn->close();
                             ?>
                         </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="valorTotal" class="form-label">Inserir valor total</label>
+                        <input type="number" class="form-control" id="valorTotal" name="valorTotal" required>
+                        <!--calcular valor total automaticamente usando os campos de quantidade do produto e desconto em php -->
+
                     </div>
 
                     <div class="row"> 
