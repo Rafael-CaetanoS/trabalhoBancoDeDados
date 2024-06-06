@@ -77,8 +77,8 @@
     <main>
       <br><br><img src="Image/01.png" alt="Descrição da imagem" width="1100" height="500">
     </main>
-    <footer>
-      <p>powerby: RAFAEL, LARISSA e EMILIA</p>
+    <footer class="footer">
+      <p class="pt-3">powerby: RAFAEL, LARISSA e EMILIA</p>
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script
