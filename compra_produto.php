@@ -157,6 +157,31 @@
                             ?>
                         </select>
                     </div>
+                    <div class="col-md-8">
+                    <label for="produto" class="form-label">Selecione o Produto</label>
+                        <select class="form-select" id="produto" name="produto" required>
+                            <option value="" selected disabled>Selecione</option>
+                            <?php
+                            include ("config.php");
+                            $sql = "SELECT nome FROM produto";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["nome"] . '">' . $row["nome"] . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">Nenhum cargo disponível</option>';
+                            }
+                            $conn->close();
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="qtde" class="form-label">Inserir data</label>
+                        <input type="number" class="form-control" id="qtde" name="qtde" required>
+                    </div>
                     <div class="row"> 
                         <div class="col-md-6">
                             <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   

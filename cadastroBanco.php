@@ -861,12 +861,16 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                     // Verificar se o formulário foi submetido
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // Recupera os dados do formulário
-                        $dt_compra = $_POST['dt_compra'];
+                        $dt_compra = date('Y-m-d', strtotime($_POST['dt_compra']));
                         $fornecedor_cnpj = $_POST['fornecedor_cnpj'];
-                    
-                        // Insere os dados no banco de dados
-                        $sql = "INSERT INTO compra_produtos (dt_compra, fornecedor_cnpj) VALUES ('$dt_compra','$fornecedor_cnpj')";
+                        $qtde = $_POST['qtde'];
+                        $produto = $_POST['produto'];
                         
+                        // Formata o array de produtos como uma string JSON válida
+                        $produtosJson = json_encode(array(array('nome_produto' => $produto, 'qtde' => $qtde)));
+                        
+                        // Insere os dados no banco de dados
+                        $sql = "CALL teste('$dt_compra', '$fornecedor_cnpj', '$produtosJson');";
                         // Verifica se a conexão está estabelecida antes de executar a consulta
                         if ($conn) {
                             if ($conn->query($sql) === TRUE) {
