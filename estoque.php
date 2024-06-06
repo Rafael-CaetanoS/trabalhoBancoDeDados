@@ -95,7 +95,7 @@
             <tbody class="table-group-divider">
               <?php
                 include ("config.php");
-              $sql = "Select e.idEstoque, e.qtde, p.nome as produto, e.Compra_produtos_idCompra from estoque e inner join produto p on e.Produto_idProduto = p.idProduto";
+              $sql = "select e.idEstoque, e.qtde, p.nome as produto, e.Compra_produtos_idCompra from estoque e inner join produto p on e.Produto_idProduto = p.idProduto";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {

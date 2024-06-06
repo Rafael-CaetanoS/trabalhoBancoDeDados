@@ -157,7 +157,7 @@
                                     echo '<option value="' . $row["idCompra"] . '">' . $row["idCompra"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum id disponível</option>';
                             }
                             $conn->close();
                             ?>

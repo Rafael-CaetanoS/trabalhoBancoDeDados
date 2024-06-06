@@ -167,7 +167,7 @@
                                     echo '<option value="' . $row["cpf"] . '">' . $row["nome"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum CPF disponível</option>';
                             }
                             $conn->close();
                             ?>
@@ -188,7 +188,7 @@
                                     echo '<option value="' . $row["cpf"] . '">' . $row["cpf"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum CPF disponível</option>';
                             }
                             $conn->close();
                             ?>
@@ -209,7 +209,7 @@
                                     echo '<option value="' . $row["idEstoque"] . '">' . $row["idEstoque"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum id disponível</option>';
                             }
                             $conn->close();
                             ?>
@@ -230,7 +230,7 @@
                                     echo '<option value="' . $row["idDesconto"] . '">' . $row["valor"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum desconto disponível</option>';
                             }
                             $conn->close();
                             ?>
@@ -240,6 +240,48 @@
                     <div class="col-md-4">
                         <label for="valorTotal" class="form-label">Inserir valor total</label>
                         <input type="number" class="form-control" id="valorTotal" name="valorTotal" required>
+                    </div>
+
+                    <div class="col-md-4">
+                    <label for="tipo_entrega" class="form-label">Inserir o tipo de entrega</label>
+                        <select class="form-select" id="tipo_entrega" name="tipo_entrega" required>
+                            <option value="" selected disabled>Selecione</option>
+                            <?php
+                            include ("config.php");
+                            $sql = "SELECT * FROM tipo_entrega";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["idTipo_entrega"] . '">' . $row["descricao"] . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">Nenhum tipo de entrega disponível</option>';
+                            }
+                            $conn->close();
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                    <label for="forma_pagamento" class="form-label">Inserir a forma de pagamento</label>
+                        <select class="form-select" id="forma_pagamento" name="forma_pagamento" required>
+                            <option value="" selected disabled>Selecione</option>
+                            <?php
+                            include ("config.php");
+                            $sql = "SELECT * FROM forma_pagamento";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["idForma_pagamento"] . '">' . $row["tipo"] . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">Nenhuma forma de pagamento disponível</option>';
+                            }
+                            $conn->close();
+                            ?>
+                        </select>
                     </div>
 
                     <div class="row"> 
