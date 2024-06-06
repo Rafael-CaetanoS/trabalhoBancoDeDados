@@ -98,7 +98,9 @@
             <tbody class="table-group-divider">
               <?php
                 include ("config.php");
-              $sql = "select * from produto";
+              $sql = "select p.idProduto, p.nome, p.descricao, p.valor, cp.tipo as categoria, pr.valor as promocao from produto p 
+                      inner join cat_produto cp on p.idCat_produto = cp.idCat_produto
+                      inner join promocao pr on p.idPromocao = pr.idPromocao";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {
@@ -108,8 +110,8 @@
                   echo "<td>" . $row["nome"] . "</td>";
                   echo "<td>" . $row["descricao"] . "</td>";
                   echo "<td>" . $row["valor"] . "</td>";
-                  echo "<td>" . $row["idCat_produto"] . "</td>";
-                  echo "<td>" . $row["idPromocao"] . "</td>";
+                  echo "<td>" . $row["categoria"] . "</td>";
+                  echo "<td>" . $row["promocao"] . "</td>";
                   echo "<td>
                   <button type='button' class='btn btn-primary' onclick=\"location.href='editar_produto.php?id=".$row['idProduto']."'\" id='editar' >Editar</button>
                     <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=produto&id=".$row['idProduto']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
@@ -166,7 +168,7 @@
                                     echo '<option value="' . $row["idCat_produto"] . '">' . $row["tipo"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhuma categoria disponível</option>';
                             }
                             $conn->close();
                             ?>
@@ -187,7 +189,7 @@
                                     echo '<option value="' . $row["idPromocao"] . '">' . $row["tipo"] .' - '. $row["valor"] .'</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhuma promoção disponível</option>';
                             }
                             $conn->close();
                             ?>
