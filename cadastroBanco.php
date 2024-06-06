@@ -861,22 +861,35 @@ if (isset($_GET['operacao']) && isset($_GET['tabela'])) {
                     // Verificar se o formulário foi submetido
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         // Recupera os dados do formulário
-                        $dt_compra = $_POST['dt_compra'];
+                        $dt_compra = date('Y-m-d', strtotime($_POST['dt_compra']));
                         $fornecedor_cnpj = $_POST['fornecedor_cnpj'];
+                        $produtos = $_POST['produtos'];
+                        $quantidades = $_POST['quantidades'];
                     
-                        // Insere os dados no banco de dados
-                        $sql = "INSERT INTO compra_produtos (dt_compra, fornecedor_cnpj) VALUES ('$dt_compra','$fornecedor_cnpj')";
-                        
-                        // Verifica se a conexão está estabelecida antes de executar a consulta
-                        if ($conn) {
-                            if ($conn->query($sql) === TRUE) {
-                                header("Location: compra_produto.php");
-                                exit();
+                        // Verifica se os arrays têm o mesmo tamanho
+                        if (count($produtos) == count($quantidades)) {
+                            // Formata os produtos e quantidades como uma string JSON válida
+                            $produtosJson = [];
+                            for ($i = 0; $i < count($produtos); $i++) {
+                                $produtosJson[] = array('nome_produto' => $produtos[$i], 'qtde' => $quantidades[$i]);
+                            }
+                            $produtosJson = json_encode($produtosJson);
+                            
+                            // Insere os dados no banco de dados
+                            $sql = "CALL teste('$dt_compra', '$fornecedor_cnpj', '$produtosJson');";
+                            // Verifica se a conexão está estabelecida antes de executar a consulta
+                            if ($conn) {
+                                if ($conn->query($sql) === TRUE) {
+                                    header("Location: compra_produto.php");
+                                    exit();
+                                } else {
+                                    echo "Erro ao salvar os dados: " . $conn->error;
+                                }
                             } else {
-                                echo "Erro ao salvar os dados: " . $conn->error;
+                                echo "Erro de conexão com o banco de dados.";
                             }
                         } else {
-                            echo "Erro de conexão com o banco de dados.";
+                            echo "Erro: quantidade de produtos e quantidades diferentes.";
                         }
                     }
                     break;
