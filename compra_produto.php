@@ -157,9 +157,9 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-md-8">
-                    <label for="produto" class="form-label">Selecione o Produto</label>
-                        <select class="form-select" id="produto" name="produto" required>
+                    <div class="col-md-8" id="produtos">
+                        <label for="produto" class="form-label">Selecione o Produto</label>
+                        <select class="form-select" name="produtos[]" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
                             include ("config.php");
@@ -177,11 +177,18 @@
                             ?>
                         </select>
                     </div>
-
-                    <div class="col-md-4">
-                        <label for="qtde" class="form-label">Inserir data</label>
-                        <input type="number" class="form-control" id="qtde" name="qtde" required>
+                    <div class="col-md-4" id="quantidades">
+                        <label for="qtde" class="form-label">Inserir a quantidade de produto</label>
+                        <input type="number" class="form-control" name="quantidades[]" required>
                     </div>
+
+                    <div class="aqui">
+
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-success mt-3 mb-2 col-md-12" id="addProduto" type="button">Adicionar Produto</button>
+                    </div>
+                                        
                     <div class="row"> 
                         <div class="col-md-6">
                             <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   
@@ -194,11 +201,6 @@
             </div>
         </div>
     </div>
-
-
-
-    
-    
     </main>
     <footer>
         <p>powerby: RAFAEL, LARISSA e EMILIA</p>
@@ -217,6 +219,32 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+    document.getElementById("addProduto").addEventListener("click", function() {
+    var produtos = document.getElementById("produtos");
+    var quantidades = document.getElementById("quantidades");
+
+    var novoProduto = produtos.cloneNode(true);
+    var novaQuantidade = quantidades.cloneNode(true);
+
+    var divProdutos = document.createElement("div");
+    divProdutos.classList.add("col-md-6");
+    divProdutos.appendChild(novoProduto);
+
+    var divQuantidades = document.createElement("div");
+    divQuantidades.classList.add("col-md-4");
+    divQuantidades.appendChild(novaQuantidade);
+
+    var divRow = document.createElement("div");
+    divRow.classList.add("row");
+    divRow.appendChild(divProdutos);
+    divRow.appendChild(divQuantidades);
+
+    var aqui = document.querySelector(".aqui");
+    aqui.appendChild(divRow);
+});
+    </script>
     <script src="js/main.js"></script>
 
   </body>
