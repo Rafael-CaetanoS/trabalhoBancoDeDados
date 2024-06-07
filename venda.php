@@ -144,17 +144,17 @@
                 <h2 class="titulo">Dados da Venda</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=venda" method="post">
                     <div class="col-md-4">
-                        <label for="dt_venda" class="form-label">Inserir data venda</label>
+                        <label for="dt_venda" class="form-label">Data venda</label>
                         <input type="date" class="form-control" id="dt_venda" name="dt_venda" required>
                     </div>
 
                     <div class="col-md-4">
-                        <label for="qtde" class="form-label">Inserir quantidade</label>
+                        <label for="qtde" class="form-label">Quantidade</label>
                         <input type="number" class="form-control" id="qtde" name="qtde" required>
                     </div>
                     
                     <div class="col-md-4">
-                    <label for="cpfCliente" class="form-label">Inserir cliente</label>
+                    <label for="cpfCliente" class="form-label">Cliente</label>
                         <select class="form-select" id="cpfCliente" name="cpfCliente" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -175,7 +175,7 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="cpfFuncionario" class="form-label">Inserir o CPF do funcionário</label>
+                    <label for="cpfFuncionario" class="form-label">Funcionário</label>
                         <select class="form-select" id="cpfFuncionario" name="cpfFuncionario" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -196,7 +196,7 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="Estoque_idEstoque" class="form-label">Inserir o id do estoque</label>
+                    <label for="Estoque_idEstoque" class="form-label">Id do estoque</label>
                         <select class="form-select" id="Estoque_idEstoque" name="Estoque_idEstoque" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -217,7 +217,7 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="idDesconto" class="form-label">Inserir desconto</label>
+                    <label for="idDesconto" class="form-label">Desconto</label>
                         <select class="form-select" id="idDesconto" name="idDesconto" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -238,7 +238,7 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="tipo_entrega" class="form-label">Inserir o tipo de entrega</label>
+                    <label for="tipo_entrega" class="form-label">Tipo de entrega</label>
                         <select class="form-select" id="tipo_entrega" name="tipo_entrega" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -259,7 +259,7 @@
                     </div>
 
                     <div class="col-md-4">
-                      <label for="forma_pagamento" class="form-label">Inserir a forma de pagamento</label>
+                      <label for="forma_pagamento" class="form-label">Forma de pagamento</label>
                         <select class="form-select" id="forma_pagamento" name="forma_pagamento" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -280,7 +280,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="valorTotal" class="form-label">Inserir valor total</label>
+                        <label for="valorTotal" class="form-label">Valor total</label>
                         <input type="number" class="form-control" id="valorTotal" name="valorTotal" required>
 
                     </div>

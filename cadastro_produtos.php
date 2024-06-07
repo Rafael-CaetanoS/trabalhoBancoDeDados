@@ -142,20 +142,20 @@
                 <h2 class="titulo">Dados do Produto</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=produto" method="post">
                     <div class="col-md-4">
-                        <label for="nome" class="form-label">Inserir nome</label>
+                        <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="descricao" class="form-label">Inserir descrição</label>
+                        <label for="descricao" class="form-label">Descrição</label>
                         <input type="text" class="form-control" id="descricao" name="descricao" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="valor" class="form-label">Inserir valor</label>
+                        <label for="valor" class="form-label">Valor</label>
                         <input type="number" class="form-control" id="valor" name="valor" required>
                     </div>
 
                     <div class="col-md-4">
-                    <label for="idCat_produto" class="form-label">Inserir categoria</label>
+                    <label for="idCat_produto" class="form-label">Categoria</label>
                         <select class="form-select" id="idCat_produto" name="idCat_produto" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -176,7 +176,7 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="idPromocao" class="form-label">Inserir promoção</label>
+                    <label for="idPromocao" class="form-label">Promoção</label>
                         <select class="form-select" id="idPromocao" name="idPromocao" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php

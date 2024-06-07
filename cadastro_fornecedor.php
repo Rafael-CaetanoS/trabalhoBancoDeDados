@@ -134,7 +134,7 @@
                 <h2 class="titulo">Dados do Fornecedor</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=fornecedor" method="post">
                     <div class="col-md-4">
-                        <label for="cnpj" class="form-label">Inserir cnpj</label>
+                        <label for="cnpj" class="form-label">CNPJ</label>
                         <input type="number" class="form-control" id="cnpj" name="cnpj" required>
                     </div>
                     <div class="col-md-4">

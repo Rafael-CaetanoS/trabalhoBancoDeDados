@@ -92,11 +92,11 @@
                 <h2 class="titulo">Editar Desconto</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=editar&tabela=desconto&id=<?php echo $id; ?>" method="post">
                     <div class="col-md-4">
-                        <label for="descricao" class="form-label">Inserir novo Desconto</label>
+                        <label for="descricao" class="form-label">Novo Desconto</label>
                         <input type="text" class="form-control" id="descricao" name="descricao" value ="<?php print $row->descricao; ?>"required>
                     </div>
                     <div class="col-md-4">
-                        <label for="valor" class="form-label">Inserir valor de desconto</label>
+                        <label for="valor" class="form-label">Valor de desconto</label>
                         <input type="number" class="form-control" id="valor" name="valor" value ="<?php print $row->valor; ?>" required>
                     </div>
 

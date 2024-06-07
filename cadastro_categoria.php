@@ -132,7 +132,7 @@
                 <h2 class="titulo">Dados da Categoria</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=cat_produto" method="post">
                     <div class="col-md-4">
-                        <label for="tipo" class="form-label">Inserir tipo</label>
+                        <label for="tipo" class="form-label">Tipo</label>
                         <input type="text" class="form-control" id="tipo" name="tipo" required>
                     </div>
                     <div class="row"> 

@@ -96,12 +96,12 @@
                         <input type="text" class="form-control" id="nome" name="nome" value ="<?php print $row->nome; ?>">
                     </div>
                     <div class="col-md-4">
-                        <label for="cpf" class="form-label">Cpf</label>
+                        <label for="cpf" class="form-label">CPF</label>
                         <input type="number" class="form-control" id="cpf" name="cpf" value ="<?php print $row->cpf; ?>">
                     </div>
 
                     <div class="col-md-4">
-                        <label for="rg" class="form-label">Rg</label>
+                        <label for="rg" class="form-label">RG</label>
                         <input type="number" class="form-control" id="rg" name="rg" value ="<?php print $row->rg; ?>">
                     </div>
 
@@ -111,9 +111,9 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="idcargo" class="form-label">Selecione o cargo</label>
+                    <label for="idcargo" class="form-label">Cargo</label>
                         <select class="form-select" id="idcargo" name="idcargo" value ="<?php print $row->idcargo; ?>">
-                            <option value="" selected disabled>Selecione um cargo</option>
+                            <option value="" selected disabled>Selecione</option>
                             <?php
                             include ("config.php");
                             $sql = "SELECT idCargo, descricao FROM cargo";

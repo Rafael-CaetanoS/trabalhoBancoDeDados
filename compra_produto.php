@@ -134,11 +134,11 @@
                 <h2 class="titulo">Dados da Compra</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=compra_produtos" method="post">
                     <div class="col-md-4">
-                        <label for="dt_compra" class="form-label">Inserir data</label>
+                        <label for="dt_compra" class="form-label">Data</label>
                         <input type="date" class="form-control" id="dt_compra" name="dt_compra" required>
                     </div>
                     <div class="col-md-4">
-                    <label for="fornecedor_cnpj" class="form-label">Selecione o fornecedor</label>
+                      <label for="fornecedor_cnpj" class="form-label">Fornecedor</label>
                         <select class="form-select" id="fornecedor_cnpj" name="fornecedor_cnpj" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -158,7 +158,7 @@
                         </select>
                     </div>
                     <div class="col-md-8" id="produtos">
-                        <label for="produto" class="form-label">Selecione o Produto</label>
+                        <label for="produto" class="form-label">Produto</label>
                         <select class="form-select" name="produtos[]" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -171,14 +171,14 @@
                                     echo '<option value="' . $row["nome"] . '">' . $row["nome"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum produto disponível</option>';
                             }
                             $conn->close();
                             ?>
                         </select>
                     </div>
                     <div class="col-md-4" id="quantidades">
-                        <label for="qtde" class="form-label">Inserir a quantidade de produto</label>
+                        <label for="qtde" class="form-label">Quantidade de produto</label>
                         <input type="number" class="form-control" name="quantidades[]" required>
                     </div>
 

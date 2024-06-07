@@ -132,7 +132,7 @@
                 <h2 class="titulo">Dados do Tipo Entrega</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=tipo_entrega" method="post">
                     <div class="col-md-4">
-                        <label for="descricao" class="form-label">Inserir descrição</label>
+                        <label for="descricao" class="form-label">Descrição</label>
                         <input type="text" class="form-control" id="descricao" name="descricao" required>
                     </div>
                     <div class="row"> 

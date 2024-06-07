@@ -132,7 +132,7 @@
                 <h2 class="titulo">Cadastrar Forma de Pagamento</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=forma_pagamento" method="post">
                     <div class="col-md-4">
-                        <label for="tipo" class="form-label">Inserir novo tipo de Pagamento</label>
+                        <label for="tipo" class="form-label">Tipo</label>
                         <input type="text" class="form-control" id="tipo" name="tipo" required>
                     </div>
                     <div class="row"> 

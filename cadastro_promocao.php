@@ -134,11 +134,11 @@
                 <h2 class="titulo">Dados da Promoção</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=promocao" method="post">
                     <div class="col-md-4">
-                        <label for="tipo" class="form-label">Inserir tipo</label>
+                        <label for="tipo" class="form-label">Tipo</label>
                         <input type="text" class="form-control" id="tipo" name="tipo" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="valor" class="form-label">Inserir valor</label>
+                        <label for="valor" class="form-label">Valor</label>
                         <input type="number" class="form-control" id="valor" name="valor" required>
                     </div>
                     <div class="row"> 

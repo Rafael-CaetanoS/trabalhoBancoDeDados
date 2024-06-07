@@ -92,20 +92,20 @@
                 <h2 class="titulo">Editar Fornecedor</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=editar&tabela=produto&id=<?php echo $id; ?>" method="post">
                 <div class="col-md-4">
-                        <label for="nome" class="form-label">Inserir nome</label>
+                        <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" value ="<?php print $row->nome; ?>" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="descricao" class="form-label">Inserir descrição</label>
+                        <label for="descricao" class="form-label">Descrição</label>
                         <input type="text" class="form-control" id="descricao" name="descricao" value ="<?php print $row->descricao; ?>" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="valor" class="form-label">Inserir valor</label>
+                        <label for="valor" class="form-label">Valor</label>
                         <input type="number" class="form-control" id="valor" name="valor" value ="<?php print $row->valor; ?>" required>
                     </div>
 
                     <div class="col-md-4">
-                    <label for="idCat_produto" class="form-label">Inserir categoria</label>
+                    <label for="idCat_produto" class="form-label">Categoria</label>
                         <select class="form-select" id="idCat_produto" name="idCat_produto" value ="<?php print $row->idCat_produto; ?>" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -118,7 +118,7 @@
                                     echo '<option value="' . $row["idCat_produto"] . '">' . $row["tipo"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum categoria disponível</option>';
                             }
                             $conn->close();
                             ?>
@@ -126,7 +126,7 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="idPromocao" class="form-label">Inserir promoção</label>
+                    <label for="idPromocao" class="form-label">Promoção</label>
                         <select class="form-select" id="idPromocao" name="idPromocao" value ="<?php print $row->idPromocao; ?>" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -139,7 +139,7 @@
                                     echo '<option value="' . $row["idPromocao"] . '">' . $row["tipo"] .' - '. $row["valor"] .'</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum cargo disponível</option>';
+                                echo '<option value="">Nenhum promoção disponível</option>';
                             }
                             $conn->close();
                             ?>

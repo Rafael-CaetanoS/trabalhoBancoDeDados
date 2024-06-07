@@ -92,11 +92,11 @@
                 <h2 class="titulo">Editar Cargo</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=editar&tabela=cargo&id=<?php echo $id; ?>" method="post">
                     <div class="col-md-4">
-                        <label for="descricao" class="form-label">Inserir novo cargo</label>
+                        <label for="descricao" class="form-label">Novo cargo</label>
                         <input type="text" class="form-control" id="descricao" name="descricao" value ="<?php print $row->descricao; ?>" >
                     </div>
                     <div class="col-md-4">
-                        <label for="salario" class="form-label">Inserir salário do cargo</label>
+                        <label for="salario" class="form-label">Salário do cargo</label>
                         <input type="number" class="form-control" id="salario" name="salario" value ="<?php print $row->salario; ?>" >
                     </div>
                     <div class="row"> 

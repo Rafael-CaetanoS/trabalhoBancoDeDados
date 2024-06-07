@@ -100,7 +100,7 @@
                         <input type="text" class="form-control" id="cidade" name="cidade" value ="<?php print $row->cidade; ?>">
                     </div>
                     <div class="col-md-4">
-                        <label for="cep" class="form-label">Cep</label>
+                        <label for="cep" class="form-label">CEP</label>
                         <input type="number" class="form-control" id="cep" name="cep" value ="<?php print $row->cep; ?>">
                     </div>
                     <div class="col-md-4">

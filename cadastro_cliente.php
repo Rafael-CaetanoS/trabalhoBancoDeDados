@@ -147,7 +147,7 @@
                 
                     <div class="col-md-4">
                         <label for="cpf" class="form-label">Inserir cpf</label>
-                        <input type="number" class="form-control" id="cpf" name="cpf" required>
+                        <input type="text" class="form-control" id="cpf" name="cpf" required>
                     </div>
 
                     <div class="col-md-4">
@@ -164,6 +164,7 @@
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
+                    
                     <div class="row"> 
                         <div class="col-md-6">
                             <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   

@@ -136,15 +136,15 @@
                 <h2 class="titulo">Dados do Item</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=item_compra" method="post">
                     <div class="col-md-4">
-                        <label for="nome_produto" class="form-label">Inserir nome do produto</label>
+                        <label for="nome_produto" class="form-label">Nome do produto</label>
                         <input type="text" class="form-control" id="nome_produto" name="nome_produto" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="qtde" class="form-label">Inserir Quantidade</label>
+                        <label for="qtde" class="form-label">Quantidade</label>
                         <input type="number" class="form-control" id="qtde" name="qtde" required>
                     </div>
                     <div class="col-md-4">
-                    <label for="compra_produtos_idCompra" class="form-label">Inserir o id da compra</label>
+                    <label for="compra_produtos_idCompra" class="form-label">Id da compra</label>
                         <select class="form-select" id="compra_produtos_idCompra" name="compra_produtos_idCompra" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php

@@ -86,16 +86,16 @@
             <thead>
               <tr>
                 <th scope="col-3">Id</th>
-                <th scope="col-3">Número Venda</th>
+                <th scope="col-3">Id Venda</th>
                 <th scope="col-3">Forma Pagamento</th>
-                <th scope="col-1" style="width: 200px;">Ações</th>
               </tr>
             </thead>
 
             <tbody class="table-group-divider">
               <?php
                 include ("config.php");
-              $sql = "select * from pagamento";
+              $sql = "select p.idPagamento, p.idVenda, fp.tipo as tipo from pagamento p 
+                      inner join forma_pagamento fp on p.idForma_pagamento = fp.idForma_pagamento";
               $result = $conn->query($sql);
 
               if ($result->num_rows > 0) {
@@ -103,11 +103,7 @@
                   echo "<tr>";
                   echo "<td>" . $row["idPagamento"] . "</td>";
                   echo "<td>" . $row["idVenda"] . "</td>";
-                  echo "<td>" . $row["idForma_pagamento"] . "</td>";
-                  echo "<td>
-                    <button type='button' class='btn btn-primary' id='editar'>Editar</button>
-                    <button onclick=\"location.href='CadastroBanco.php?operacao=excluir&tabela=pagamento&id=".$row['idPagamento']."'\" type='button' class='btn btn-danger' id='excluir'>Excluir</button>  
-                  </td>";
+                  echo "<td>" . $row["tipo"] . "</td>";
 
                   echo "</tr>";
             
@@ -119,59 +115,10 @@
                 $conn->close();
               ?>
             </tbody>
-          </table>
-          <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Realizar Pagamento</button>
-          </div>  
+          </table>  
         </div>
       </div>
     </div>
-
-
-    <div class="container-fluid" style="display:none" id="cadastro">
-        <div class="formulario">
-            <div class="formularioDados">
-                <h2 class="titulo">Realizar Pagamento</h2>
-                <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=pagamento" method="post">
-                    <div class="col-md-4">
-                        <label for="idvenda" class="form-label">Inserir número da Venda</label>
-                        <input type="text" class="form-control" id="idvenda" name="idvenda" required>
-                    </div>
-                    <div class="col-md-4">
-                    <label for="idpagamento" class="form-label">Selecione o tipo de Pagamento</label>
-                        <select class="form-select" id="idpagamento" name="idpagamento" required>
-                            <option value="" selected disabled>Selecione o tipo de Pagamento</option>
-                            <?php
-                            include ("config.php");
-                            $sql = "SELECT idForma_pagamento, tipo FROM forma_pagamento";
-                            $result = $conn->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["idForma_pagamento"] . '">' . $row["tipo"] . '</option>';
-                                }
-                            } else {
-                                echo '<option value="">Nenhum tipo de pagamento disponível</option>';
-                            }
-                            $conn->close();
-                            ?>
-                        </select>
-                    </div>
-                    <div class="row"> 
-                        <div class="col-md-6">
-                            <button class="btn btn-primary mt-3 mb-2 col-md-12" type="submit">Cadastrar</button>   
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-danger mt-3 mb-2 col-md-12" id="cancelar" type="button">Cancelar</button>
-                        </div>
-                    </div>                
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
     
     
     </main>

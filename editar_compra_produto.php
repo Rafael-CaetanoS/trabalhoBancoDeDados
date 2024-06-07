@@ -92,11 +92,11 @@
                 <h2 class="titulo">Editar Compra com Fornecedor</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=editar&tabela=compra_produtos&id=<?php echo $id; ?>" method="post">
                 <div class="col-md-4">
-                        <label for="dt_compra" class="form-label">Inserir data</label>
+                        <label for="dt_compra" class="form-label">Data</label>
                         <input type="date" class="form-control" id="dt_compra" name="dt_compra" value ="<?php print $row->dt_compra; ?>" required>
                     </div>
                     <div class="col-md-4">
-                    <label for="fornecedor_cnpj" class="form-label">Selecione o fornecedor</label>
+                    <label for="fornecedor_cnpj" class="form-label">Fornecedor</label>
                         <select class="form-select" id="fornecedor_cnpj" name="fornecedor_cnpj" value ="<?php print $row->fornecedor_cnpj; ?>" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php

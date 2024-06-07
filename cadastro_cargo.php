@@ -135,11 +135,11 @@
                 <h2 class="titulo">Dados do Cargo</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=cargo" method="post">
                     <div class="col-md-4">
-                        <label for="descricao" class="form-label">Inserir novo cargo</label>
+                        <label for="descricao" class="form-label">Novo cargo</label>
                         <input type="text" class="form-control" id="descricao" name="descricao" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="salario" class="form-label">Inserir salário do cargo</label>
+                        <label for="salario" class="form-label">Salário do cargo</label>
                         <input type="number" class="form-control" id="salario" name="salario" required>
                     </div>
                     <div class="row"> 

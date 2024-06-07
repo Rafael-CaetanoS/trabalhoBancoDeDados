@@ -121,7 +121,7 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Cadastrar Cargo</button>
+            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Cadastrar Desconto</button>
           </div>  
         </div>
       </div>
@@ -134,11 +134,11 @@
                 <h2 class="titulo">Cadastrar Desconto</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=inserir&tabela=desconto" method="post">
                     <div class="col-md-4">
-                        <label for="descricao" class="form-label">Inserir novo Desconto</label>
+                        <label for="descricao" class="form-label">Descrição</label>
                         <input type="text" class="form-control" id="descricao" name="descricao" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="valor" class="form-label">Inserir valor de desconto</label>
+                        <label for="valor" class="form-label">Valor</label>
                         <input type="number" class="form-control" id="valor" name="valor" required>
                     </div>
                     <div class="row"> 

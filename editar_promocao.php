@@ -92,11 +92,11 @@
                 <h2 class="titulo">Editar Fornecedor</h2>
                 <form class="row g-3" action="CadastroBanco.php?operacao=editar&tabela=promocao&id=<?php echo $id; ?>" method="post">
                     <div class="col-md-4">
-                        <label for="tipo" class="form-label">Inserir tipo</label>
+                        <label for="tipo" class="form-label">Tipo</label>
                         <input type="text" class="form-control" id="tipo" name="tipo" value ="<?php print $row->tipo; ?>" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="valor" class="form-label">Inserir valor</label>
+                        <label for="valor" class="form-label">Valor</label>
                         <input type="number" class="form-control" id="valor" name="valor" value ="<?php print $row->valor; ?>" required>
                     </div>
 

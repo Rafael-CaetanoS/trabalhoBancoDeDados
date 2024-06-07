@@ -119,7 +119,7 @@
             </tbody>
           </table>
           <div class="d-flex justify-content-center align-items-center">
-            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Cadastrar Cargo</button>
+            <button type="button" class="btn btn-primary mt-1 mb-2 col-md-6" id="cadastrar">Cadastrar Receita</button>
           </div>  
         </div>
       </div>
@@ -136,9 +136,9 @@
                         <input type="text" class="form-control" id="tipo" name="tipo" required>
                     </div>
                     <div class="col-md-4">
-                    <label for="cpfcliente" class="form-label">Selecione o Cliente</label>
+                    <label for="cpfcliente" class="form-label">Cliente</label>
                         <select class="form-select" id="cpfcliente" name="cpfcliente" required>
-                            <option value="" selected disabled>Selecione um cliente</option>
+                            <option value="" selected disabled>Selecione</option>
                             <?php
                             include ("config.php");
                             $sql = "SELECT cpf, nome FROM cliente";
