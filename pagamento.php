@@ -25,54 +25,76 @@
 
   <body>
   
-    <header>
-      <ul class="nav nav-tabs custom-header bg-primary" >
+  <header>
+      <ul class="nav nav-tabs custom-header" style="height:60px; align-items:center; background-color: rgb(49, 131, 218); font-size: 19px;"> 
         <li class="nav-item">
           <a class="nav-link text-light" aria-current="page" href="index.php">
-            <img src="Image/001.png" alt="logo" width="30" height="30"></a>
+            <img src="Image/001.png" alt="logo" width="45" height="45"></a>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cliente</a>
+          <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pessoas</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="cadastro_cliente.php">Cadastro Cliente</a></li>
             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="endereco.php">Cadastro Endereço</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="cadastro_receita.php">Cadastro Receita</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="cadastro_funcionario.php">Cadastro Funcionário</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="cadastro_cargo.php">Cadastro Cargo</a></li>
           </ul>
         </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Loja</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="cadastro_cargo.php">Cadastro Cargo</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="cadastro_funcionario.php">Cadastro Funcionário</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="cadastro_fornecedor.php">Cadastro Fornecedor</a></li>
-          </ul>
-        </li>
-       
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Produtos</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="catalago.php">Catalogo</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="cadastro_compra_fornecedor.php">Cadastro Compra Fornecedor</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="cadastro_produtos.php">Cadastro Produto</a></li>
+            <li><a class="dropdown-item" href="cadastro_produtos.php">Cadastro Produtos</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="cadastro_categoria.php">Cadastro Categoria</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="cadastro_promocao.php">Cadastro Promoção</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="estoque.php">Cadastro Estoque</a></li>
+          </ul>
+        </li>
+       
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Transações</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="compra_produto.php">Cadastro Compra Fornecedor</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="item_compra.php">Cadastro Item Compra</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="venda.php">Cadastro Venda</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="formaPagamento.php">Cadastro Forma de Pagamento</a></li>
           </ul>
         </li>
 
-
-
-        <li class = "carinho_compra "><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart4 text-light" viewBox="0 0 16 16">
-          <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-          </svg></a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Financeiro</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="pagamento.php">Pagamento</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="desconto.php">Cadastro Desconto</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="nota_fiscal.php">Cadastro Nota Fiscal</a></li>
+          </ul>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Entrega</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="entrega.php">Cadastro Entrega</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="tipo_entrega.php">Cadastro Tipo Entrega </a></li>
+          </ul>
+        </li>
+
       </ul>
     </div> 
     </header>
