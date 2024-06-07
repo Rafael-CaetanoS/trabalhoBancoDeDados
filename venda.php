@@ -154,7 +154,7 @@
                     </div>
                     
                     <div class="col-md-4">
-                    <label for="cpfCliente" class="form-label">Inserir o CPF do cliente</label>
+                    <label for="cpfCliente" class="form-label">Inserir cliente</label>
                         <select class="form-select" id="cpfCliente" name="cpfCliente" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -167,7 +167,7 @@
                                     echo '<option value="' . $row["cpf"] . '">' . $row["nome"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum CPF disponível</option>';
+                                echo '<option value="">Nenhum cliente disponível</option>';
                             }
                             $conn->close();
                             ?>
@@ -185,10 +185,10 @@
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["cpf"] . '">' . $row["cpf"] . '</option>';
+                                    echo '<option value="' . $row["cpf"] . '">' . $row["nome"] . '</option>';
                                 }
                             } else {
-                                echo '<option value="">Nenhum CPF disponível</option>';
+                                echo '<option value="">Nenhum funcionário disponível</option>';
                             }
                             $conn->close();
                             ?>
@@ -217,7 +217,7 @@
                     </div>
 
                     <div class="col-md-4">
-                    <label for="idDesconto" class="form-label">Inserir o id do desconto</label>
+                    <label for="idDesconto" class="form-label">Inserir desconto</label>
                         <select class="form-select" id="idDesconto" name="idDesconto" required>
                             <option value="" selected disabled>Selecione</option>
                             <?php
@@ -282,7 +282,6 @@
                     <div class="col-md-4">
                         <label for="valorTotal" class="form-label">Inserir valor total</label>
                         <input type="number" class="form-control" id="valorTotal" name="valorTotal" required>
-                        <!--calcular valor total automaticamente usando os campos de quantidade do produto e desconto em php -->
 
                     </div>
 
